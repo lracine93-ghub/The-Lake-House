@@ -1,0 +1,18 @@
+version: 2
+ 
+models:
+  - name: stg_sales
+    description: "Staging table for raw sales data"
+    columns:
+      - name: sales_id # Adjust to match the column name in your raw_sales.csv
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_products
+    description: "Staging table for raw products data"
+    columns:
+      - name: id # Adjust to match the column name in your raw_products.csv
+        tests:
+          - unique
+          - not_null
