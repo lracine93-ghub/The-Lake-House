@@ -1,0 +1,30 @@
+[0m14:40:29.143636 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246FC8D2BA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246FD5AA5D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246FDADFC50>]}
+
+
+============================== 14:40:29.148905 | 3fef1467-2834-495d-a2e2-b868450d4f22 ==============================
+[0m14:40:29.148905 [info ] [MainThread]: Running with dbt=1.10.1
+[0m14:40:29.150173 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\lucie\\.dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt init sales_pipeline', 'send_anonymous_usage_stats': 'True'}
+[0m14:40:29.171080 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\lucie\.dbt
+[0m14:40:29.174683 [debug] [MainThread]: Starter project path: C:\Users\lucie\Documents\GitHub\The-Lake-House\.venv-py313\Lib\site-packages\dbt\include\starter_project
+[0m14:40:29.194681 [info ] [MainThread]: 
+Your new dbt project "sales_pipeline" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m14:40:29.195360 [info ] [MainThread]: Setting up your profile.
+[0m14:40:40.611411 [info ] [MainThread]: Profile sales_pipeline written to C:\Users\lucie\.dbt\profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m14:40:40.612491 [debug] [MainThread]: Command `dbt init` succeeded at 14:40:40.612355 after 11.70 seconds
+[0m14:40:40.612795 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246FDB16190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246FF0BBD10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246FF0CCE20>]}
+[0m14:40:40.613085 [debug] [MainThread]: Flushing usage events
+[0m14:40:41.400279 [debug] [MainThread]: An error was encountered while trying to flush usage events
