@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: local_source
+    # This points to the database connection defined in your profiles.yml
+    schema: main
+    # Optional but good practice: add a description of your data source
+    description: "Raw Sales and Product CSVs loaded from local storage"
+    
+    tables:
+      - name: sales_raw
+        description: "The raw transactional sales data from source"
+      - name: products_raw
+        description: "The raw product dimension data"
