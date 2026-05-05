@@ -1,0 +1,27 @@
+version: 2
+
+models:
+    - name: vw_sales_by_prod_ctgry
+      description: "Aggregated sales data by product category."
+      columns:
+        - name: product_category
+          description: "Category of the product."
+          meta:
+            dimension:
+              type: string
+              label: "Product Category"
+
+        - name: total_sales
+          description: "Total number of items or sales amount per category."
+          meta:
+            dimension:
+              type: number
+              label: "Total Sales"
+              
+      meta:
+        metrics:
+          total_category_sales:
+            type: sum
+            sql: ${total_sales}
+            label: "Total Sales by Category"
+            description: "Total sales generated per product category."

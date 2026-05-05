@@ -1,0 +1,34 @@
+version: 2
+
+models:
+    - name: vw_mom_revenue
+      description: "Month over month revenue tracking and growth."
+      columns:
+        - name: month
+          description: "The month of the sales data."
+          meta:
+            dimension:
+              type: timestamp
+              label: "Month"
+
+        - name: total_revenue
+          description: "Total revenue for the month."
+          meta:
+            dimension:
+              type: number
+              label: "Total Revenue"
+
+        - name: mom_growth_percentage
+          description: "Month over month growth percentage."
+          meta:
+            dimension:
+              type: number
+              label: "MoM Growth %"
+
+      meta:
+        metrics:
+          total_monthly_revenue:
+            type: sum
+            sql: ${total_revenue}
+            label: "Total Revenue"
+            description: "Sum of monthly revenue"

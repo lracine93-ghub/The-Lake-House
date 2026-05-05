@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_products
+    description: "The raw product dimension data from source"
+    columns:
+      - name: id # Adjust to match the column name in your raw_products.csv
+        tests:
+          - unique
+          - not_null
+
+

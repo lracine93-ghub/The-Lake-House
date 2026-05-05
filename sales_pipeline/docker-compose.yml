@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: local_postgres
+    environment:
+     # Change this to a secure password in production or use environment variables
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: p6ssw0rd
+      POSTGRES_DB: sales_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
