@@ -1,9 +1,9 @@
-{{ config(materialized='view') }}
+{{ config(materialized='table') }}
 
 WITH source_data AS (
     SELECT
         *
-    FROM read_csv_auto('data/raw/products_raw.csv')
+    FROM {{ source('local_source', 'raw_products') }}
 )
 SELECT *
 FROM source_data

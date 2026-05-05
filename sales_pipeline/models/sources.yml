@@ -2,13 +2,35 @@ version: 2
 
 sources:
   - name: local_source
-    # This points to the database connection defined in your profiles.yml
-    schema: main
-    # Optional but good practice: add a description of your data source
-    description: "Raw Sales and Product CSVs loaded from local storage"
+  # This points to the database connection defined in your profiles.yml
+    description: "Public schema containing staging tables for sales and products data."
+    database: sales_db
+    schema: public
     
+    # Define freshness rules to ensure data is updated regularly
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+        
     tables:
-      - name: sales_raw
+      - name: raw_sales
         description: "The raw transactional sales data from source"
-      - name: products_raw
+        loaded_at_field: "loaded_at" # Column in your table that indicates when the data was loaded
+        columns:
+          - name: sales_id # Adjust to match the column name in your raw_sales.csv
+            tests:
+              - unique
+              - not_null
+
+      - name: raw_products
         description: "The raw product dimension data"
+        loaded_at_field: "loaded_at" # Column in your table that indicates when the data was loaded
+        columns:
+          - name: id # Adjust to match the column name in your raw_products.csv
+            tests:
+              - unique
+              - not_null
+
+
+
+
