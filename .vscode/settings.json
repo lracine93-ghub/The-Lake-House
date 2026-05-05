@@ -18,7 +18,7 @@
             "alias": "warehouse",
             "type": "file",
             "path": "c:\\Users\\lucie\\Documents\\GitHub\\The-Lake-House\\sales_pipeline\\data\\warehouse.duckdb",
-            "attached": true
+            "attached": false
         }
     ],
     "duckdb.defaultDatabase": "warehouse"
