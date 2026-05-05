@@ -1,0 +1,33 @@
+version: 2
+
+models:
+    - name: fct_revenue
+      description: "Fact table for revenue data."
+      columns:
+        - name: sales_id
+          description: "Unique identifier for each sale."
+          meta:
+            dimension:
+              type: string
+              label: "Sales ID"
+
+        - name: product_id
+          description: "Identifier for the product sold."
+          meta:
+            dimension:
+              type: string
+              label: "Product ID"
+
+        - name: total_amt
+          description: "Total amount of the sale."
+          meta:
+            dimension:
+              type: number
+              label: "Total Amount"
+      meta:
+        metrics:  
+          total_revenue:
+            type: sum
+            sql: ${total_amt}
+            label: "Total Revenue"
+            description: "Total revenue generated from sales."
