@@ -1,5 +1,5 @@
 {
-    "editor.acceptSuggestionOnEnter": "on",
+    "editor.acceptSuggestionOnEnter": true,
     "editor.quickSuggestions": {
         "other": false,
         "comments": false,
@@ -21,5 +21,6 @@
             "attached": false
         }
     ],
-    "duckdb.defaultDatabase": "warehouse"
+    "duckdb.defaultDatabase": "warehouse",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
