@@ -7,7 +7,7 @@ WITH revenue_data AS (
 
 SELECT 
     DATE_TRUNC('month', date::date) AS order_month,
-    SUM(revenue) AS total_revenue
+    SUM(revenue_net_tax) AS total_revenue
 FROM revenue_data
 GROUP BY 1
 ORDER BY 1
