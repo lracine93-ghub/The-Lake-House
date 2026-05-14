@@ -6,6 +6,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 from pathlib import Path
 from dotenv import load_dotenv
+import datetime 
+import boto3
+from botocore.exceptions import ProfileNotFound, ClientError
 # from cryptography.hazmat.primitives import serialization
 # from cryptography.hazmat.backends import default_backend
 
@@ -28,7 +31,13 @@ class Config:
     except ValueError:
         POSTGRES_PORT = 5432  # Fallback to the standard port
         
-    
+    # SNOWFLAKE SETTINGS
+    SNOWFLAKE_USER = os.getenv('SNOWFLAKE_USER')
+    SNOWFLAKE_PASSWORD = os.getenv('SNOWFLAKE_PASSWORD')
+    SNOWFLAKE_ACCOUNT = os.getenv('SNOWFLAKE_ACCOUNT')
+    SNOWFLAKE_WAREHOUSE = os.getenv('SNOWFLAKE_WAREHOUSE')
+    SNOWFLAKE_DATABASE = os.getenv('SNOWFLAKE_DATABASE')
+    SNOWFLAKE_SCHEMA = os.getenv('SNOWFLAKE_SCHEMA')
 
     # API SETTINGS
     encoded_password = urllib.parse.quote(POSTGRES_PASSWORD)
@@ -42,6 +51,13 @@ class Config:
     # CREATE DATA DIRECTORY IF IT DOESN'T EXIST
     DATA_DIR.mkdir(exist_ok=True)
     # SAMPLE_DIR.mkdir(exist_ok=True)
+
+    # Boto3 S3 SETTINGS (if needed in the future)
+   #  AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+   #  AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_BUCKET_NAME = os.getenv('AWS_S3_BUCKET_NAME')
+    AWS_REGION = os.getenv('AWS_REGION')
+
 # INSTANTIATE CONFIG FOR USE IN OTHER FILES
 config = Config()
 
@@ -82,3 +98,33 @@ def header():
         "Accept": "application/json",
         "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
+
+def snowflake_connection_params():
+    """Return a dictionary of Snowflake connection parameters."""
+    return {
+        "user": Config.SNOWFLAKE_USER,
+        "password": Config.SNOWFLAKE_PASSWORD,
+        "account": Config.SNOWFLAKE_ACCOUNT,
+        "warehouse": Config.SNOWFLAKE_WAREHOUSE,
+        "database": Config.SNOWFLAKE_DATABASE,
+        "schema": Config.SNOWFLAKE_SCHEMA
+    }
+
+def get_s3_client(profile_name='lucien-dev'):
+    """
+    Creates a Boto3 client using a secure Named Profile.
+    This pattern ensures credentials are never hardcoded.
+    """
+    try:
+        # Create a session tied to your SSO profile
+        session = boto3.Session(profile_name=profile_name)
+        
+        # Create the client from that session
+        return session.client('s3')
+    
+    except ProfileNotFound:
+        print(f"Error: AWS Profile '{profile_name}' not found. Run 'aws configure sso'.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+
