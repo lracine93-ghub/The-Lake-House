@@ -1,11 +1,10 @@
 version: 2
 
 sources:
-  - name: local_source
-  # This points to the database connection defined in your profiles.yml
+  - name: local_source # This points to the database connection defined in your profiles.yml
     description: "Public schema containing staging tables for sales and products data."
-    database: sales_db
-    schema: public
+    database: public
+    schema: raw
     
     # Define freshness rules to ensure data is updated regularly
     freshness:
