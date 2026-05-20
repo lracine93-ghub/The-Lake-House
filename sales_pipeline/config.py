@@ -9,8 +9,9 @@ from dotenv import load_dotenv
 import datetime 
 import boto3
 from botocore.exceptions import ProfileNotFound, ClientError
-# from cryptography.hazmat.primitives import serialization
-# from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.backends import default_backend
+import snowflake.connector
 
 # LOCATE THE DIRECTORY OF THIS FILE TO FIND THE .ENV
 env_path = Path('.') / '.env'
@@ -38,6 +39,9 @@ class Config:
     SNOWFLAKE_WAREHOUSE = os.getenv('SNOWFLAKE_WAREHOUSE')
     SNOWFLAKE_DATABASE = os.getenv('SNOWFLAKE_DATABASE')
     SNOWFLAKE_SCHEMA = os.getenv('SNOWFLAKE_SCHEMA')
+    SNOWFLAKE_ROLE = os.getenv('SNOWFLAKE_ROLE')
+    DBT_ENV_SECRET_KEY_FILE_PATH = os.getenv('DBT_ENV_SECRET_KEY_FILE_PATH')
+    DBT_ENV_SECRET_KEY_PASSPHRASE = os.getenv('DBT_ENV_SECRET_KEY_PASSPHRASE') 
 
     # API SETTINGS
     encoded_password = urllib.parse.quote(POSTGRES_PASSWORD)
@@ -99,16 +103,6 @@ def header():
         "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
 
-def snowflake_connection_params():
-    """Return a dictionary of Snowflake connection parameters."""
-    return {
-        "user": Config.SNOWFLAKE_USER,
-        "password": Config.SNOWFLAKE_PASSWORD,
-        "account": Config.SNOWFLAKE_ACCOUNT,
-        "warehouse": Config.SNOWFLAKE_WAREHOUSE,
-        "database": Config.SNOWFLAKE_DATABASE,
-        "schema": Config.SNOWFLAKE_SCHEMA
-    }
 
 def get_s3_client(profile_name='lucien-dev'):
     """
@@ -126,5 +120,34 @@ def get_s3_client(profile_name='lucien-dev'):
         print(f"Error: AWS Profile '{profile_name}' not found. Run 'aws configure sso'.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+    
+def get_snowflake_connection():
+    """Establish a connection to Snowflake using credentials from the config and Key Pair Authentication."""
+    try:
+        with open(Config.DBT_ENV_SECRET_KEY_FILE_PATH, "rb") as key_file:
+            private_key = serialization.load_pem_private_key(
+                key_file.read(),
+                password=Config.DBT_ENV_SECRET_KEY_PASSPHRASE.encode(),
+            )
+        private_key_der = private_key.private_bytes(
+            encoding=serialization.Encoding.DER,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.NoEncryption()
+        )
+        conn = snowflake.connector.connect(
+            user=Config.SNOWFLAKE_USER,
+            account=Config.SNOWFLAKE_ACCOUNT,
+            warehouse=Config.SNOWFLAKE_WAREHOUSE,
+            database=Config.SNOWFLAKE_DATABASE,
+            schema=Config.SNOWFLAKE_SCHEMA,
+            role=Config.SNOWFLAKE_ROLE,
+            # PRIVATE_KEY_CONTENT=CONFIG.SNOW_PKEY_PATH,
+            # PRIVATE_KEY_PASSPHRASE=CONFIG.SNOW_PKEY_PASSPHRASE,
+            private_key=private_key_der
+        )
+        return conn
+    except Exception as e:
+        logging.error(f"Error connecting to Snowflake: {e}")
+        return None
 
 
