@@ -1,9 +1,13 @@
+version: '3.8'
+
 services:
+  # ------------------------------------------------------------
+  # 1. Source Database
+  # ------------------------------------------------------------
   postgres:
     image: postgres:15-alpine
     container_name: local_postgres
     environment:
-     # Change this to a secure password in production or use environment variables
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: p6ssw0rd
       POSTGRES_DB: sales_db
@@ -12,5 +16,66 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  # ------------------------------------------------------------
+  # 2. Lightdash Internal Metadata Database
+  # ------------------------------------------------------------
+  lightdash-db:
+    image: postgres:16-alpine
+    container_name: lightdash-metadata-db
+    environment:
+      POSTGRES_DB: lightdash
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: lightdash_internal_pass_99
+    volumes:
+      - lightdash-metadata-data:/var/lib/postgresql/data
+    # No ports exposed to host to prevent 5432 port collision! 
+    # It communicates with Lightdash safely over Docker's internal network.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ------------------------------------------------------------
+  # 3. Lightdash BI Application Layer
+  # ------------------------------------------------------------
+  lightdash:
+    image: lightdash/lightdash:latest
+    container_name: lightdash-bi
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - LIGHTDASH_SECRET=super_secret_session_key_change_me_in_prod
+    
+      - PGHOST=lightdash-db
+      - PGPORT=5432
+      - PGUSER=postgres
+      - PGPASSWORD=lightdash_internal_pass_99
+      - PGDATABASE=lightdash
+      - DBT_PROJECT_DIR=/usr/app/dbt
+      - SITE_URL=http://localhost:8080
+      # ------------------------------------------------------------
+      # Add These S3 Storage Environment Variables
+      # ------------------------------------------------------------
+      - S3_ENDPOINT=https://s3.amazonaws.com
+      - S3_REGION=us-east-1                    # <-- Change to your actual AWS region if different
+      - S3_BUCKET=lucien-racine-aws-bucket # <-- Swap with a dedicated bucket name or your pipeline bucket
+      # - AWS_PROFILE=default 
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_SESSION_TOKEN
+     # - AWS_ACCESS_KEY_ID=YOUR_AWS_KEY         # <-- Swap with your AWS Access Key
+      # - AWS_SECRET_ACCESS_KEY=YOUR_AWS_SECRET  # <-- Swap with your AWS Secret Key
+
+    volumes:
+      # Maps your current local project folder right inside the container
+      - .:/usr/app/dbt
+      - /mnt/c/Users/lucie/.aws:/root/.aws:ro
+    depends_on:
+      lightdash-db:
+        condition: service_healthy
+
 volumes:
   pgdata:
+  lightdash-metadata-data:

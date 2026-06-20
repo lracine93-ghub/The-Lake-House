@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: local_source # This points to the database connection defined in your profiles.yml
     description: "Public schema containing staging tables for sales and products data."
-    database: public
+    database: lucien_migration
     schema: raw
     
     # Define freshness rules to ensure data is updated regularly
@@ -26,7 +26,7 @@ sources:
         loaded_at_field: "loaded_at" # Column in your table that indicates when the data was loaded
         columns:
           - name: id # Adjust to match the column name in your raw_products.csv
-            tests:
+            tests: 
               - unique
               - not_null
 

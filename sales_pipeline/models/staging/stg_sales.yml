@@ -4,7 +4,7 @@ models:
   - name: stg_sales
     description: "Staging table for raw sales data"
     columns:
-    - name: sales_id # Adjust to match the column name in your raw_sales.csv
+    - name: order_id # Adjust to match the column name in your raw_sales.csv
       tests:
         - unique
         - not_null

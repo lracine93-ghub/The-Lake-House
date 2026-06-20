@@ -70,7 +70,7 @@ def load_sales_fact_tbl(table_name):
     # 2. Load data from S3 to Snowflake using Snowflake's COPY INTO command
     
     copy_query = f""" COPY INTO {Config.SNOWFLAKE_SCHEMA}.{table_name}
-                    FROM @LUCIEN_MIGRATION.RAW.S3_RAW_STAGE/{table_name}
+                    FROM @LUCIEN_MIGRATION.RAW.RAW_S3_STAGE/{table_name}
                     FILE_FORMAT = (TYPE = 'PARQUET')
                     PATTERN = '.*\\.parquet'
                     MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE
@@ -110,7 +110,7 @@ def load_products_dim_tbl(table_name):
     # 2. Load data from S3 to Snowflake using Snowflake's COPY INTO command
     
     copy_query = f""" COPY INTO {Config.SNOWFLAKE_SCHEMA}.{table_name}
-                    FROM @LUCIEN_MIGRATION.RAW.S3_RAW_STAGE/{table_name}
+                    FROM @LUCIEN_MIGRATION.RAW.RAW_S3_STAGE/{table_name}
                     FILE_FORMAT = (TYPE = 'PARQUET')
                     PATTERN = '.*\\.parquet'
                     MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE
@@ -124,6 +124,7 @@ def load_products_dim_tbl(table_name):
         conn.close()
 
 if __name__ == "__main__":
-   #  migrate_table('raw_products')
+    migrate_table('raw_products')
     migrate_table('raw_sales')
+    load_products_dim_tbl('raw_products')
     load_sales_fact_tbl('raw_sales')
