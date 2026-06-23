@@ -65,35 +65,6 @@ class Config:
 # INSTANTIATE CONFIG FOR USE IN OTHER FILES
 config = Config()
 
-def load_csv_to_postgres(file_path: str, table_name: str, conn_string: str) -> None:
-    """
-    Reads a CSV file and loads it into a PostgreSQL table.
-    """
-    try:
-        logging.info(f"Reading {file_path}...")
-        df = pd.read_csv(file_path)
-        
-        # Create database engine
-        engine = create_engine(conn_string)
-        
-        logging.info(f"Loading data into table '{table_name}'...")
-        # 'replace' will drop and recreate the table with the new CSV schema
-        df.to_sql(
-            name=table_name, 
-            con=engine, 
-            schema='public', 
-            if_exists='replace', 
-            index=False,
-            chunksize=10000 # Good for large datasets
-        )
-        logging.info(f"Successfully loaded table '{table_name}' with {len(df)} rows.")
-        
-    except FileNotFoundError:
-        logging.error(f"File not found: {file_path}")
-    except SQLAlchemyError as e:
-        logging.error(f"Database error occurred: {e}")
-    except Exception as e:
-        logging.error(f"An unexpected error occurred: {e}")
 
 def header():
     """Return a standard header for API requests."""
