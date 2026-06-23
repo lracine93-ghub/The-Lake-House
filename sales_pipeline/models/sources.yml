@@ -14,7 +14,7 @@ sources:
     tables:
       - name: raw_sales
         description: "The raw transactional sales data from source"
-        loaded_at_field: "loaded_at" # Column in your table that indicates when the data was loaded
+        loaded_at_field: "updated_at" # Column in your table that indicates when the data was loaded
         columns:
           - name: sales_id # Adjust to match the column name in your raw_sales.csv
             tests:
@@ -23,7 +23,7 @@ sources:
 
       - name: raw_products
         description: "The raw product dimension data"
-        loaded_at_field: "loaded_at" # Column in your table that indicates when the data was loaded
+        loaded_at_field: "updated_at" # Column in your table that indicates when the data was loaded
         columns:
           - name: id # Adjust to match the column name in your raw_products.csv
             tests: 

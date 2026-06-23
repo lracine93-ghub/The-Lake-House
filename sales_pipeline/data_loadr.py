@@ -1,48 +1,53 @@
 import pandas as pd
-from sqlalchemy import create_engine
-import snowflake.connector
-from snowflake.connector.pandas_tools import write_pandas
-import os
-from config import Config, get_s3_client, get_snowflake_connection
-import boto3 
+from config import Config, get_snowflake_connection
 import logging
-import datetime
-
-def migrate_table(table_name):
-
-    # 1. Connect to your local Postgres (The "Silly" Server)
-    pg_engine = create_engine(Config.DATABASE_URL)
-
-    try:
-        pg_engine.connect()
-        print("Successfully connected to PostgreSQL.")
-
-        s3 = get_s3_client()
-        print("Successfully connected to AWS S3.")
-    except Exception as e:
-        print(f"Error connecting to PostgreSQL or S3: {e}")
-        return
+import os
+from sqlalchemy import create_engine, exc as SQLAlchemyError
 
 
-    print(f"--- Starting migration for {table_name} ---")
+# Set up logging for a clean, professional output
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+# Define paths to  local CSVs
+SALES_CSV_PATH = Config.DATA_DIR / "sales_raw.csv"
+PRODUCTS_CSV_PATH = Config.DATA_DIR / "products_raw.csv"
+
+
+if __name__ == "__main__":
+    logging.info("Starting Extraction/Loading process...")
     
-    # 2. Extract: Use chunking for large tables 
-    query = f"SELECT * FROM {table_name}"
-    df = pd.read_sql(query, pg_engine)
-    
-    # 3. Save as Parquet for efficient upload to S3
-    parquet_file = f"{table_name}_{datetime.datetime.now().strftime('%Y%m%d')}_{datetime.datetime.now().strftime('%H%M%S')}.parquet"
-    df.to_parquet(parquet_file, index=False, engine='pyarrow')
    
+def load_csv_to_postgres(file_path: str, table_name: str, conn_string: str) -> None:
+    """
+    Reads a CSV file and loads it into a PostgreSQL table.
+    """
     try:
-        s3.upload_file(parquet_file, Config.AWS_S3_BUCKET_NAME, f"raw/{table_name}/{datetime.datetime.now().strftime('%Y-%m-%d')}/{parquet_file}")
-        print(f"Loaded {parquet_file} into {Config.AWS_S3_BUCKET_NAME} S3 bucket.")
+        logging.info(f"Reading {file_path}...")
+        df = pd.read_csv(file_path)
+        
+        # Create database engine
+        engine = create_engine(conn_string)
+        
+        logging.info(f"Loading data into table '{table_name}'...")
+        # 'replace' will drop and recreate the table with the new CSV schema
+        df.to_sql(
+            name=table_name, 
+            con=engine, 
+            schema='public', 
+            if_exists='replace', 
+            index=False,
+            chunksize=10000 # Good for large datasets
+        )
+        logging.info(f"Successfully loaded table '{table_name}' with {len(df)} rows.")
+        
+    except FileNotFoundError:
+        logging.error(f"File not found: {file_path}")
+    except SQLAlchemyError as e:
+        logging.error(f"Database error occurred: {e}")
     except Exception as e:
-        print(f"Error uploading to S3: {e}")
-    finally:
-        if os.path.exists(parquet_file):
-            os.remove(parquet_file)
-
+        logging.error(f"An unexpected error occurred: {e}")
+    
 def load_sales_fact_tbl(table_name):
     # Loads the sales fact table from S3 to Snowflake using Snowflake's COPY INTO command.
 
@@ -122,9 +127,11 @@ def load_products_dim_tbl(table_name):
         print(f"Error loading data into {table_name} table in Snowflake: {e}")
     finally:
         conn.close()
+    logging.info("Extraction/Loading process completed.")
 
-if __name__ == "__main__":
-    migrate_table('raw_products')
-    migrate_table('raw_sales')
-    load_products_dim_tbl('raw_products')
-    load_sales_fact_tbl('raw_sales')
+     # 1. Load Sales Raw Table
+    # load_csv_to_postgres(SALES_CSV_PATH, "raw_sales", Config.DATABASE_URL)
+    
+
+    # 2. Load Products Raw Table
+   #  load_csv_to_postgres(PRODUCTS_CSV_PATH, "raw_products", Config.DATABASE_URL)
