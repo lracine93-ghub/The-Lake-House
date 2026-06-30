@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 import keyring 
 from dotenv import load_dotenv
 
@@ -48,16 +49,20 @@ else:
 
 # 5. Generate docs 
 
-generate_docs = str(os.environ.get('GENERATE_DOCS', 'N')).strip().lower()
-# print(f'DEBUG: The raw env variable is: '{os.environ.get('GENERATE_DOCS')}'"')
+generate_docs = str(os.environ.get('GENERATE_DOCS', 'N')).strip()
+print(f'DEBUG: The raw env variable is: {generate_docs}"')
 
 # Check for environtment variable
 # Returns None if no variable is set
 if generate_docs == 'Y': 
     print("--- GENERATING DBT DOCUMENTATION ---")
     subprocess.run(["dbt", "docs", "generate"], check = True)
-else:
-    print("--- SKIPPING DBT DOCUMENTATION GENERATION ---")
 
-print("--- GENERATING DATA LINEAGE ---")
-subprocess.run(["dbt", "docs", "serve", "--port", "8085"])
+    print("--- SERVING DBT DOCUMENTATION ---")
+    try:
+        subprocess.run(["dbt", "docs", "serve", "--port", "8085"], check = True)
+    except KeyboardInterrupt:
+        print("DBT documentation server stopped by user.")
+        sys.exit(0)
+
+
