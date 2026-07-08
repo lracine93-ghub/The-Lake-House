@@ -4,7 +4,7 @@ models:
     - name: vw_sales_by_prod_ctgry
       description: "Aggregated sales data by product category."
       columns:
-        - name: product_category
+        - name: category
           description: "Category of the product."
           meta:
             dimension:

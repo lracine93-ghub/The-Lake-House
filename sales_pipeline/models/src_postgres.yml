@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: external_source
+    database: LUCIEN_MIGRATION
+    schema: RAW
+
+    tables:
+      - name: raw_products
+        description: "The raw product dimension data"
+        config:
+          loaded_at_field: "TO_TIMESTAMP(DATE_PART(epoch_second, updated_at) / 1000000)" # Column in your table that indicates when the data was loaded
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 90, period: day}
+        columns:
+          - name: updated_at # Adjust to match the column name in your raw_products.csv
+              
+      - name: raw_sales
+        description: "The raw transactional sales data from source"
+        config:
+          loaded_at_field: "TO_TIMESTAMP(DATE_PART(epoch_second, updated_at) / 1000000)" # Column in your table that indicates when the data was loaded
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 90, period: day}
+        columns:
+          - name: updated_at # 

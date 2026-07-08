@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Core dimension table for all company products, categorized by price tier."
+    columns:
+      - name: product_id
+        description: "The primary key for the product."
+        tests:
+          - not_null
+      - name: product_name
+        description: "The name of the product."
+        tests:
+          - not_null
+      - name: product_description
+        description: "A brief description of the product."
+      - name: price
+        description: "The price of the product."
+        tests:
+          - not_null
+      - name: category
+        description: "The category to which the product belongs."
+      - name: price_level
+        description: "The price level of the product (Low, Medium, High)."
+      - name: last_updated
+        description: "The timestamp of the last update to the product information."
