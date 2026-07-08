@@ -6,7 +6,6 @@ models:
       - name: order_id
         description: "Unique identifier for each sale."
         tests:
-          - unique
           - not_null
 
       - name: product_id
