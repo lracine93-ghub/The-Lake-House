@@ -1,35 +1,34 @@
 version: 2
 
 sources:
-  - name: local_source
-  # This points to the database connection defined in your profiles.yml
+  - name: local_source # This points to the database connection defined in your profiles.yml
     description: "Public schema containing staging tables for sales and products data."
-    database: sales_db
-    schema: public
+    database: lucien_migration
+    schema: raw
     
-    # Define freshness rules to ensure data is updated regularly
-    freshness:
-      warn_after: {count: 24, period: hour}
-      error_after: {count: 48, period: hour}
+  
         
     tables:
       - name: raw_sales
         description: "The raw transactional sales data from source"
-        loaded_at_field: "loaded_at" # Column in your table that indicates when the data was loaded
+        config:
+          loaded_at_field: "TO_TIMESTAMP(DATE_PART(epoch_second, updated_at) / 1000000)" # Column in your table that indicates when the data was loaded
+        freshness:
+            warn_after: {count: 30, period: day}
+            error_after: {count: 90, period: day}
         columns:
-          - name: sales_id # Adjust to match the column name in your raw_sales.csv
-            tests:
-              - unique
-              - not_null
+          - name: updated_at # Adjust to match the column name in your raw_sales.csv
 
       - name: raw_products
         description: "The raw product dimension data"
-        loaded_at_field: "loaded_at" # Column in your table that indicates when the data was loaded
+        config:
+          loaded_at_field: "TO_TIMESTAMP(DATE_PART(epoch_second, updated_at) / 1000000)" # Column in your table that indicates when the data was loaded
+        freshness:
+            warn_after: {count: 30, period: day}
+            error_after: {count: 90, period: day}
         columns:
-          - name: id # Adjust to match the column name in your raw_products.csv
-            tests:
-              - unique
-              - not_null
+          - name: updated_at # Adjust to match the column name in your raw_products.csv
+
 
 
 

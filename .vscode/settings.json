@@ -1,5 +1,5 @@
 {
-    "editor.acceptSuggestionOnEnter": true,
+    "editor.acceptSuggestionOnEnter": "on",
     "editor.quickSuggestions": {
         "other": false,
         "comments": false,
@@ -22,5 +22,17 @@
         }
     ],
     "duckdb.defaultDatabase": "warehouse",
-    "python-envs.defaultEnvManager": "ms-python.python:system"
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "sales_pipeline",
+            "database": "sales_db",
+            "username": "postgres"
+        }
+    ]
 }

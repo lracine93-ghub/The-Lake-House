@@ -1,0 +1,47 @@
+version 2: 
+models:
+  - name: fct_sales
+    description: "Fact table for sales data, containing measures and foreign keys to dimensions."
+    columns:
+      - name: order_id
+        description: "Unique identifier for each sale."
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "Identifier for the product sold."
+        tests:
+          - not_null
+
+      - name: customer_id
+        description: "Identifier for the customer who made the purchase."
+        tests:
+          - not_null
+
+      - name: quantity
+        description: "Quantity of the product sold."
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0 # Assuming typical purchase quantities
+                max_value: 99999999999999
+
+      - name: unit_price
+        description: "Unit price of the product at the time of sale."
+        tests:
+            - not_null
+            - dbt_utils.accepted_range:
+                arguments:
+                  min_value: 0 # Assuming typical purchase quantities
+                  max_value: 99999999999999
+
+
+      - name: total_amt
+        description: "Total amount of the sale (quantity * unit price)."
+        tests:
+            - not_null
+            - dbt_utils.accepted_range:
+                arguments:
+                min_value: 0 # Assuming typical purchase quantities
+                max_value: 99999999999999

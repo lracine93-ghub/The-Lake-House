@@ -3,8 +3,16 @@ version: 2
 models:
     - name: fct_revenue
       description: "Fact table for revenue data."
+      meta:
+        metrics:  
+          total_revenue_metric:
+            type: sum
+            sql: '${TABLE}.REVENUE'
+            label: "Total Revenue"
+            description: "Total revenue generated from sales."
+            
       columns:
-        - name: sales_id
+        - name: order_id
           description: "Unique identifier for each sale."
           meta:
             dimension:
@@ -18,16 +26,9 @@ models:
               type: string
               label: "Product ID"
 
-        - name: total_amt
+        - name: REVENUE
           description: "Total amount of the sale."
           meta:
             dimension:
               type: number
               label: "Total Amount"
-      meta:
-        metrics:  
-          total_revenue:
-            type: sum
-            sql: ${total_amt}
-            label: "Total Revenue"
-            description: "Total revenue generated from sales."

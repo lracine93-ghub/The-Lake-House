@@ -10,11 +10,11 @@ products AS (
 )
 
 SELECT 
-    sales.sales_id,
+    sales.order_id,
     sales.product_id,
-    sales.sale_date AS date,
-    sales.qty as quantity,
+    sales.dt_ordered AS date,
+    sales.quantity,
     products.price,
-    (sales.qty * products.price) AS revenue
+    (sales.quantity * products.price) AS revenue
 FROM sales
-LEFT JOIN products ON sales.product_id = products.id
+LEFT JOIN products ON sales.product_id = products.product_id

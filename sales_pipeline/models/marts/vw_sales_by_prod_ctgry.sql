@@ -11,7 +11,7 @@ products AS (
 
 SELECT 
     products.category,
-    SUM(sales.qty * products.price) AS total_sales
+    SUM(sales.quantity * products.price) AS total_sales
 FROM sales
-LEFT JOIN products ON sales.product_id = products.id
+LEFT JOIN products ON sales.product_id = products.product_id
 GROUP BY 1
