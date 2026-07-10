@@ -11,11 +11,11 @@ load_dotenv(".env")
 os.environ["DBT_ENV_SECRET_KEY_PASSPHRASE"] = keyring.get_password("snowflake_metadata", "dbt_passphrase")
 
 # Checking Source Freshness (Optional but recommended)
-# print("--- CHECKING DBT SOURCE FRESHNESS ---")
-# subprocess.run(["dbt", "source", "freshness"], check=True)
+print("--- CHECKING DBT SOURCE FRESHNESS ---")
+subprocess.run(["dbt", "source", "freshness"], check=True)
 
 # Optional: Clean the dbt environment before running (use with caution)
-clean_environment = str(os.environ.get('CLEAN_ENV', 'N')).strip().lower()
+clean_environment = str(os.environ.get('CLEAN_ENV', 'N')).strip()
 
 if clean_environment == 'Y':
      print("--- CLEANING DBT ENVIRONMENT ---")
@@ -29,7 +29,7 @@ subprocess.run(["dbt", "debug"])
 
 # 4. Optionally, you can also run dbt models or tests
  
-bypass_tests = str(os.environ.get('BYPASS_TESTS', 'N')).strip().lower()
+bypass_tests = str(os.environ.get('BYPASS_TESTS', 'N')).strip()
 
 if bypass_tests == 'Y':
     print("--- BYPASSING TESTS ---")
@@ -50,7 +50,6 @@ else:
 # 5. Generate docs 
 
 generate_docs = str(os.environ.get('GENERATE_DOCS', 'N')).strip()
-print(f'DEBUG: The raw env variable is: {generate_docs}"')
 
 # Check for environtment variable
 # Returns None if no variable is set
@@ -63,6 +62,8 @@ if generate_docs == 'Y':
         subprocess.run(["dbt", "docs", "serve", "--port", "8085"], check = True)
     except KeyboardInterrupt:
         print("DBT documentation server stopped by user.")
+        
+        
         sys.exit(0)
 
 

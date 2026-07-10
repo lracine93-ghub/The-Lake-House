@@ -71,6 +71,17 @@ else
     fi
 fi
 
+echo "✔ AWS authentication verified. Proceeding with the Pre-Flight Checks..."
+
+if ! dbt compile > /dev/null 2>&1; then
+    echo "❌ Error: dbt compilation failed. Please check your dbt project configuration."
+    
+    aws sso logout --profile $AWS_S3_PROFILE
+    return 1 > 2 > /dev/null ||
+    exit 1
+fi
+
+
 echo "Running next pipeline step: Extraction & Loading..."
 
 
@@ -78,9 +89,15 @@ echo "Running next pipeline step: Extraction & Loading..."
 echo "--- Starting Data Extraction (to AWS S3 ) & Loading (to Snowflake) ---"
 python3 main.py
 
+# echo "Checking newest record in Snowflake..."
+# snowsql -q "SELECT updated_at, TYPEOF(updated_at) 
+# FROM LUCIEN_MIGRATION.RAW.RAW_SALES 
+# WHERE updated_at IS NOT NULL 
+# LIMIT 5;"
+
 # 7. Run dbt transformations
 echo "--- Starting Data Transformation ---"
-export GENERATE_FULL_REF="Y" GENERATE_DOCS="Y" CLEAN_ENV="Y" BYPASS_TESTS="N"
+export GENERATE_FULL_REF="Y" GENERATE_DOCS="Y" CLEAN_ENV="N" BYPASS_TESTS="N"
 if python3 dbt_run.py; then
     echo "Pipeline completed successfully!"
     PIPELINE_STATUS=1

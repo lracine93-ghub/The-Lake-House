@@ -7,7 +7,7 @@ WITH source_sales AS (
 ),
 RENAMED AS (
     SELECT
-        sales_id as order_id,
+        {{ dbt_utils.generate_surrogate_key(['sales_id', 'product_id']) }} as order_id,
         product_id,
         cust_id as customer_id,
         qty as quantity,
