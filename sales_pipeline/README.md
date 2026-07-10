@@ -1,87 +1,104 @@
 # End-to-End Modern Data Stack Pipeline: The Lake House
 
-An automated, production-grade data engineering pipeline that extracts raw source data, handles incremental loading, and orchestrates complex transformations using **dbt Core** and a cloud-native **Snowflake Enterprise Data Warehouse**.
+An automated, production-grade data engineering pipeline that extracts raw source data, handles cross-platform incremental loading, and orchestrates complex transformations using **dbt Core** and a cloud-native **Snowflake Enterprise Data Warehouse**.
 
-The project is fully parameterized for CI/CD deployment workflows, decoupling operational logic from pipeline code via shell environment variables.
+The project features a defensive, decoupled orchestration architecture that isolates environmental parameters from backend data code using automated Bash wrappers and Python execution scripts.
 
 ---
 
 ## 🏗️ Architecture Overview
 
-The pipeline follows a modular, scalable ELT (Extract, Load, Transform) architecture leveraging corporate design patterns:
+The pipeline follows a modular, scalable ELT (Extract, Load, Transform) architecture leveraging corporate infrastructure patterns:
 
-[ Raw Data Sources ]
-│
-▼ (Extraction Script)
-[ Snowflake Landing Zone / Target Database ]
-│
-▼ (dbt Core Architecture)
-┌────────────────────────────────────────────────────────┐
-│ Staging Layer       ➔ Clean, recast, and format raw   |
-│                                                        │
-│ Intermediate Layer  ➔ Business logic & data modeling  │
-│                                                        │
-│ Marts Layer         ➔ Optimized dimensional tables    │
-└────────────────────────────────────────────────────────┘
+```text
+[ Data Extraction Source / API ]
+               │
+               ▼ (AWS Identity Audit & Python Extraction)
+[ Amazon S3 (Staging Area) ➡️ Snowflake RAW Data Warehouse ]
+               │
+               ▼ (Orchestrated dbt Medallion DAG)
+┌────────────────────────────────────────────────────────────────┐
+│ Staging (Bronze)     ➔ Clean, recast, and deduplicate raw data │
+│                                                                │
+│ Intermediate (Silver)➔ Core business logic & entity resolution │
+│                                                                │
+│ Marts (Gold)         ➔ Optimized dimensional & fact tables     │
+└────────────────────────────────────────────────────────────────┘
 
 
-* **Data Warehouse:** Snowflake (Enterprise Edition) utilizing decoupled compute/storage, virtual multi-cluster warehouses, and role-based access control (RBAC).
-* **Transformation & Modeling:** dbt Core (v1.x) managing the full Directed Acyclic Graph (DAG), data lineage, and schema testing.
-* **Orchestration & Automation:** Python 3 execution script designed for containerized or CI/CD runner deployment patterns.
+
+** Cloud Infra & Warehousing: Snowflake (Enterprise Edition) utilizing decoupled compute/storage layers and AWS (Amazon S3) for data lake staging.
+
+** Transformation & Modeling: dbt Core managing the full Directed Acyclic Graph (DAG), column descriptions, and referential integrity assertions.
+
+** Orchestration & Automation: Multi-tiered automation using a robust shell controller (run_pipeline.sh) feeding into a dedicated Python environment supervisor (dbt_run.py).
 
 ---
 
 ## 🚀 Key Engineering Features
 
-* **Modular dbt Layers:** Strictly isolates staging, intermediate, and final analytical dimensions/fact tables to ensure zero logic duplication.
-* **Production-Grade Orchestration:** Python orchestration wrapper (`dbt_run.py`) built to intercept terminal environment flags, enabling dynamic CI/CD execution toggles (e.g., conditional artifact/documentation generation).
-* **Robust Data Quality:** Built-in schema, uniqueness, relationship, and accepted-value constraints executed at runtime to guarantee downstream data integrity.
+** Cross-Platform Security & Env-Parsing: Orchestrator natively reads, sanitizes, and strips out Windows carriage returns (\r), leading/trailing whitespaces, and inline comments from local .env files to guarantee platform-agnostic execution stability within Linux/WSL environments.
 
+** Defensive AWS SSO Orchestration: Implements pre-flight aws sts get-caller-identity checks to verify session health. If a token is expired or missing, it dynamically initiates an interactive device-code OAuth flow (aws sso login), pausing the process for safe browser authentication before advancing.
+
+** Pre-Flight Structural Validation: Programmatically tests the dbt compiler schema health via silent checks (dbt compile) prior to kicking off data actions, guaranteeing that configuration mistakes fail-fast and immediately force-kill stale security sessions.
+
+** Robust Data Deduplication: Leverages windowed analytical syntax (QUALIFY row_number() OVER (...)) and MD5 surrogate key hashing inside dbt models to eliminate duplicate source transactions and protect downstream constraints.
+
+** Session Hardening & Security Posture: To enforce zero-trust local constraints, the orchestrator triggers a mandatory, post-execution token invalidation loop (aws sso logout) regardless of a successful run or an extraction abort to prevent lingering cloud sessions.
 ---
 
 ## 🛠️ Local Setup & Execution
 
 ### 1. Prerequisites
-* Python 3.10+
-* A Snowflake Account (or Enterprise Trial)
-* Local dbt Core installation
+* Python 3.10+ (configured inside a local dbt-env virtual environment)
+* AWS CLI v2 configured with an SSO profile
+* Snowflake Account with functional role privileges
 
 ### 2. Configure Credentials
-Ensure your local `~/.dbt/profiles.yml` is configured to map to your Snowflake target database environment:
+** Create a local .env file in the project root to house your external references:
 
-```yaml
-the_lake_house:
-  target: dev
-  outputs:
-    dev:
-      type: snowflake
-      account: [your-snowflake-account-identifier]
-      user: [your-username]
-      password: [your-password]
-      role: [your-functional-role, e.g., ACCOUNTADMIN]
-      database: [your-target-db]
-      warehouse: [your-virtual-warehouse]
-      schema: [your-target-schema]
-      threads: 4
-3. Running the Pipeline
-The core execution script handles model builds. It supports an environment variable toggle (GENERATE_DOCS) to dynamically control compilation and artifact generation:
+    AWS_S3_PROFILE=your-aws-sso-profile-name
+
+
+** Ensure your local `~/.dbt/profiles.yml` is configured to map to your Snowflake target database environment:
+
+    ```yaml
+    the_lake_house:
+      target: dev
+      outputs:
+        dev:
+          type: snowflake
+          account: [your-snowflake-account-identifier]
+          user: [your-username]
+          password: [your-password]
+          role: [your-functional-role, e.g., ACCOUNTADMIN]
+          database: [your-target-db]
+          warehouse: [your-virtual-warehouse]
+          schema: [your-target-schema]
+          threads: 4
+      
+3. Running the Pipeline via the Orchestrator
+The pipeline is entirely self-contained. Grant executable access to the main controller shell script and kick it off:
 
 Bash
 # Clone the repository
-git clone https://github.com/lracine-ghub/The-Lake-House.git
+git clone [https://github.com/lracine-ghub/The-Lake-House.git](https://github.com/lracine-ghub/The-Lake-House.git)
 cd The-Lake-House
 
-# Run the core data pipeline models only
-python3 dbt_run.py
+# Clone the repository and navigate to the project directory
+git clone [https://github.com/lracine-ghub/The-Lake-House.git](https://github.com/lracine-ghub/The-Lake-House.git)
+cd The-Lake-House
 
-# Run the pipeline AND dynamically generate the dbt catalog/documentation artifacts
-export GENERATE_DOCS="true"
-python3 dbt_run.py
+# Grant executable permissions to the controller
+chmod +x run_pipeline.sh
+
+# Fire the end-to-end orchestration sequence
+./run_pipeline.sh
 
 📊 Lineage & Documentation
-Data lineage and structural validation records are embedded natively into the framework.
-
-To view the comprehensive data dependency graph (DAG), column-level descriptions, and constraints generated by the pipeline execution, run:
+Data dependency charts, schema definitions, and model validation constraints are compiled dynamically. To generate the runtime documentation and spin up the structural DAG web server, execute:
 
 Bash
+  dbt docs generate
   dbt docs serve
