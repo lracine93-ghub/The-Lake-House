@@ -29,7 +29,7 @@ flowchart LR
         F -->|QUALIFY & Deduplicate| G[Silver / Intermediate]
         G -->|Dimensional Models| H[Gold / Analytics Marts]
     end
-
+```
 
 ** Cloud Infra & Warehousing: Snowflake (Enterprise Edition) utilizing decoupled compute/storage layers and AWS (Amazon S3) for data lake staging.
 
