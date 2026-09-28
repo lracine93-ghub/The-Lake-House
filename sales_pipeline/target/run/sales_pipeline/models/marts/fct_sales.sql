@@ -1,0 +1,34 @@
+
+  
+    
+
+create or replace transient table LUCIEN_MIGRATION.analytics.fct_sales
+    
+    
+    
+    
+    
+
+    as (with staged_sales as (
+    select
+       *
+    from LUCIEN_MIGRATION.staging.stg_sales
+),
+final as (
+    select
+        order_id,
+        product_id,
+        customer_id,
+        quantity,
+        unit_price,
+        total_amt,
+        dt_ordered,
+        last_updated
+    from staged_sales
+)
+select * from final
+    )
+;
+
+
+  
