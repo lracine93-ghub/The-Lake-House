@@ -1,1 +1,2 @@
-pytest>=8.0
+dbt-core==1.12.5
+dbt-snowflake==1.12.1
