@@ -2865,3 +2865,1297 @@ where product_name is null
 [0m15:08:07.071756 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff33e5ec3530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff33ced20dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff33e673e660>]}
 [0m15:08:07.076863 [debug] [MainThread]: Flushing usage events
 [0m15:08:07.084216 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:30:55.458376 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffdcead38d70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffdcecdad490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffdceb34c9b0>]}
+
+
+============================== 15:30:55.465952 | a053356e-5aee-4b5c-8e50-331299d5bba0 ==============================
+[0m15:30:55.465952 [info ] [MainThread]: Running with dbt=1.12.5
+[0m15:30:55.467315 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'partial_parse': 'True', 'fail_fast': 'False', 'printer_width': '80', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '/tmp/lake_house_dbt_2gl2lzsm', 'maximum_seed_size_mib': '1', 'hints_enabled': 'True', 'debug': 'False', 'write_json': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'empty': 'None', 'cache_selected_only': 'False', 'quiet': 'False', 'no_print': 'None', 'log_cache_events': 'False', 'use_experimental_parser': 'False', 'version_check': 'True', 'invocation_command': 'dbt deps', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'log_path': '/Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/logs'}
+[0m15:30:55.816442 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a053356e-5aee-4b5c-8e50-331299d5bba0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffdceaeed0a0>]}
+[0m15:30:56.724767 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-or_v8xgi'
+[0m15:30:56.726047 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m15:30:56.779582 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m15:30:56.784052 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m15:30:56.837573 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m15:30:56.851687 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m15:31:00.584940 [info ] [MainThread]: Installed from version 1.4.1
+[0m15:31:00.586356 [info ] [MainThread]: Up to date!
+[0m15:31:00.587288 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'a053356e-5aee-4b5c-8e50-331299d5bba0', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffdceacfe7e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffdceaa9e2d0>]}
+[0m15:31:00.589255 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 5.5566034, "process_in_blocks": "19520", "process_kernel_time": 0.278553, "process_mem_max_rss": "126572", "process_out_blocks": "184", "process_user_time": 2.996846}
+[0m15:31:00.590330 [debug] [MainThread]: Command `dbt deps` succeeded at 15:31:00.590165 after 5.56 seconds
+[0m15:31:00.591085 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffdcecdad490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffdcea96b950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffdceaa2eea0>]}
+[0m15:31:00.591881 [debug] [MainThread]: Flushing usage events
+[0m15:31:00.595944 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:31:04.708369 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff613522a0c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff61345632c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff6135497830>]}
+
+
+============================== 15:31:04.712144 | a436ceea-3e26-49b4-a3ab-de80b9f08ba3 ==============================
+[0m15:31:04.712144 [info ] [MainThread]: Running with dbt=1.12.5
+[0m15:31:04.713401 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt debug', 'debug': 'False', 'indirect_selection': 'eager', 'log_path': '/Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/logs', 'introspect': 'True', 'warn_error': 'None', 'hints_enabled': 'True', 'empty': 'None', 'static_parser': 'True', 'log_format': 'default', 'cache_selected_only': 'False', 'quiet': 'False', 'use_experimental_parser': 'False', 'target_path': 'None', 'write_json': 'True', 'partial_parse': 'True', 'fail_fast': 'False', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '/tmp/lake_house_dbt_2gl2lzsm', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'log_cache_events': 'False', 'printer_width': '80', 'no_print': 'None', 'use_colors': 'True'}
+[0m15:31:04.724380 [info ] [MainThread]: dbt version: 1.12.5
+[0m15:31:04.725821 [info ] [MainThread]: python version: 3.12.3
+[0m15:31:04.727214 [info ] [MainThread]: python path: /local_disk0/.ephemeral_nfs/envs/pythonEnv-c0a04fdf-137a-4e9b-8412-f1abf4fd0ae3/bin/python
+[0m15:31:04.728380 [info ] [MainThread]: os info: Linux-6.1.186-228.374.amzn2023.aarch64-aarch64-with-glibc2.39
+[0m15:31:05.374709 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m15:31:05.376047 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m15:31:05.376880 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m15:31:05.824112 [info ] [MainThread]: Using profiles dir at /tmp/lake_house_dbt_2gl2lzsm
+[0m15:31:05.825678 [info ] [MainThread]: Using profiles.yml file at /tmp/lake_house_dbt_2gl2lzsm/profiles.yml
+[0m15:31:05.826515 [info ] [MainThread]: Using dbt_project.yml file at /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/dbt_project.yml
+[0m15:31:05.827885 [info ] [MainThread]: adapter type: snowflake
+[0m15:31:05.828678 [info ] [MainThread]: adapter version: 1.12.1
+[0m15:31:05.949623 [info ] [MainThread]: Configuration:
+[0m15:31:05.951112 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m15:31:05.955797 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m15:31:05.957427 [info ] [MainThread]: Required dependencies:
+[0m15:31:05.958357 [debug] [MainThread]: Executing "git --help"
+[0m15:31:05.983107 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   history    EXPERIMENTAL: Rewrite history\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m15:31:05.984199 [debug] [MainThread]: STDERR: "b''"
+[0m15:31:05.985026 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m15:31:05.985794 [info ] [MainThread]: Connection:
+[0m15:31:05.986557 [info ] [MainThread]:   account: NJMMDSE-OJ36156
+[0m15:31:05.987277 [info ] [MainThread]:   user: LRACINEDEV01
+[0m15:31:05.987957 [info ] [MainThread]:   database: LUCIEN_MIGRATION
+[0m15:31:05.988677 [info ] [MainThread]:   warehouse: COMPUTE_WH
+[0m15:31:05.989372 [info ] [MainThread]:   role: ACCOUNTADMIN
+[0m15:31:05.990049 [info ] [MainThread]:   schema: RAW
+[0m15:31:05.990732 [info ] [MainThread]:   authenticator: None
+[0m15:31:05.991402 [info ] [MainThread]:   oauth_client_id: None
+[0m15:31:05.992044 [info ] [MainThread]:   query_tag: None
+[0m15:31:05.992789 [info ] [MainThread]:   client_session_keep_alive: False
+[0m15:31:05.993413 [info ] [MainThread]:   host: None
+[0m15:31:05.994011 [info ] [MainThread]:   port: None
+[0m15:31:05.994719 [info ] [MainThread]:   proxy_host: None
+[0m15:31:05.995454 [info ] [MainThread]:   proxy_port: None
+[0m15:31:05.996085 [info ] [MainThread]:   protocol: None
+[0m15:31:05.996756 [info ] [MainThread]:   connect_retries: 1
+[0m15:31:05.997424 [info ] [MainThread]:   connect_timeout: None
+[0m15:31:05.998065 [info ] [MainThread]:   retry_on_database_errors: False
+[0m15:31:05.998788 [info ] [MainThread]:   retry_all: False
+[0m15:31:05.999623 [info ] [MainThread]:   insecure_mode: False
+[0m15:31:06.000292 [info ] [MainThread]:   reuse_connections: True
+[0m15:31:06.001017 [info ] [MainThread]:   s3_stage_vpce_dns_name: None
+[0m15:31:06.001747 [info ] [MainThread]:   workload_identity_provider: None
+[0m15:31:06.002391 [info ] [MainThread]:   workload_identity_entra_resource: None
+[0m15:31:06.003082 [info ] [MainThread]:   platform_detection_timeout_seconds: 0.0
+[0m15:31:06.003966 [info ] [MainThread]: Registered adapter: snowflake=1.12.1
+[0m15:31:06.119926 [debug] [MainThread]: Acquiring new snowflake connection 'debug'
+[0m15:31:06.123426 [debug] [MainThread]: Using snowflake connection "debug"
+[0m15:31:06.124775 [debug] [MainThread]: On debug: select 1 as id
+[0m15:31:06.125760 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m15:31:06.335405 [error] [MainThread]: Failed to get OCSP response after 1 attempt.
+[0m15:31:06.606777 [debug] [MainThread]: SQL status: SUCCESS 1 in 0.481 seconds
+[0m15:31:06.608457 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m15:31:06.609426 [info ] [MainThread]: [32mAll checks passed![0m
+[0m15:31:06.611149 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 1.9878956, "process_in_blocks": "2552", "process_kernel_time": 0.404038, "process_mem_max_rss": "242308", "process_out_blocks": "8", "process_user_time": 3.888866}
+[0m15:31:06.612465 [debug] [MainThread]: Command `dbt debug` succeeded at 15:31:06.612282 after 1.99 seconds
+[0m15:31:06.614119 [debug] [MainThread]: Connection 'debug' was left open.
+[0m15:31:06.615838 [debug] [MainThread]: On debug: Close
+[0m15:31:07.061309 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff6134314620>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff611fdc7da0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff611e964d40>]}
+[0m15:31:07.063171 [debug] [MainThread]: Flushing usage events
+[0m15:31:07.067142 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:31:12.070289 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd7d3310d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd7d333b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd7d3326f0>]}
+
+
+============================== 15:31:12.079222 | 0bd0b669-f2a6-4976-b087-5d1c277cfb16 ==============================
+[0m15:31:12.079222 [info ] [MainThread]: Running with dbt=1.12.5
+[0m15:31:12.080565 [debug] [MainThread]: running dbt with arguments {'empty': 'None', 'debug': 'False', 'introspect': 'True', 'partial_parse': 'True', 'log_format': 'default', 'write_json': 'True', 'profiles_dir': '/tmp/lake_house_dbt_2gl2lzsm', 'maximum_seed_size_mib': '1', 'fail_fast': 'False', 'version_check': 'True', 'invocation_command': 'dbt ls --resource-type model', 'quiet': 'False', 'use_colors': 'True', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'static_parser': 'True', 'printer_width': '80', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'log_path': '/Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/logs', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'target_path': 'None', 'no_print': 'None', 'hints_enabled': 'True', 'use_experimental_parser': 'False'}
+[0m15:31:12.855942 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m15:31:12.857598 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m15:31:12.858645 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m15:31:13.217939 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0bd0b669-f2a6-4976-b087-5d1c277cfb16', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd7d2d7d10>]}
+[0m15:31:13.295933 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0bd0b669-f2a6-4976-b087-5d1c277cfb16', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd6abd9f40>]}
+[0m15:31:13.297994 [info ] [MainThread]: Registered adapter: snowflake=1.12.1
+[0m15:31:13.448659 [debug] [MainThread]: checksum: 933b09aaceab67438c5cd8b1047b0adfff596628142bfbe525a06b36f55dd486, vars: {}, profile: sales_pipeline, target: databricks, version: 1.12.5
+[0m15:31:14.788361 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m15:31:14.790714 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m15:31:14.791536 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m15:31:14.802711 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0bd0b669-f2a6-4976-b087-5d1c277cfb16', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd66a6cce0>]}
+[0m15:31:15.039952 [debug] [MainThread]: Wrote artifact WritableManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/manifest.json
+[0m15:31:15.067987 [debug] [MainThread]: Wrote artifact SemanticManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/semantic_manifest.json
+[0m15:31:15.107920 [debug] [MainThread]: Wrote artifact OsiDocument to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/osi_document.json
+[0m15:31:15.170994 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0bd0b669-f2a6-4976-b087-5d1c277cfb16', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd6641f350>]}
+[0m15:31:15.172103 [info ] [MainThread]: Found 7 models, 1 snapshot, 15 data tests, 4 sources, 679 macros
+[0m15:31:15.172927 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0bd0b669-f2a6-4976-b087-5d1c277cfb16', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd66d1fd70>]}
+[0m15:31:15.174533 [info ] [MainThread]: sales_pipeline.marts.dim_products
+[0m15:31:15.177445 [info ] [MainThread]: sales_pipeline.marts.fct_revenue
+[0m15:31:15.178304 [info ] [MainThread]: sales_pipeline.marts.fct_sales
+[0m15:31:15.179263 [info ] [MainThread]: sales_pipeline.staging.stg_products
+[0m15:31:15.180142 [info ] [MainThread]: sales_pipeline.staging.stg_sales
+[0m15:31:15.180788 [info ] [MainThread]: sales_pipeline.marts.vw_mom_revenue
+[0m15:31:15.181469 [info ] [MainThread]: sales_pipeline.marts.vw_sales_by_prod_ctgry
+[0m15:31:15.184260 [debug] [MainThread]: Resource report: {"command_name": "list", "command_success": true, "command_wall_clock_time": 4.244912, "process_in_blocks": "88", "process_kernel_time": 0.318091, "process_mem_max_rss": "243560", "process_out_blocks": "0", "process_user_time": 4.241691}
+[0m15:31:15.185875 [debug] [MainThread]: Command `dbt ls` succeeded at 15:31:15.185731 after 4.25 seconds
+[0m15:31:15.191363 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd7c996cf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd665f3b60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffcd665f3cb0>]}
+[0m15:31:15.192341 [debug] [MainThread]: Flushing usage events
+[0m15:31:15.197218 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:31:18.950185 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3639ade9f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff363a37d760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3639823560>]}
+
+
+============================== 15:31:18.954199 | 0edb2b6f-03ea-4507-acf9-98fec1766095 ==============================
+[0m15:31:18.954199 [info ] [MainThread]: Running with dbt=1.12.5
+[0m15:31:18.955366 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'hints_enabled': 'True', 'send_anonymous_usage_stats': 'True', 'empty': 'False', 'profiles_dir': '/tmp/lake_house_dbt_2gl2lzsm', 'cache_selected_only': 'False', 'introspect': 'True', 'log_cache_events': 'False', 'use_colors': 'True', 'quiet': 'False', 'invocation_command': 'dbt compile', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'debug': 'False', 'static_parser': 'True', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'no_print': 'None', 'indirect_selection': 'eager', 'target_path': 'None', 'warn_error': 'None', 'maximum_seed_size_mib': '1', 'version_check': 'True', 'log_path': '/Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/logs', 'printer_width': '80', 'write_json': 'True'}
+[0m15:31:19.666624 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m15:31:19.668014 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m15:31:19.669049 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m15:31:20.032885 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0edb2b6f-03ea-4507-acf9-98fec1766095', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff36398d2ae0>]}
+[0m15:31:20.107776 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0edb2b6f-03ea-4507-acf9-98fec1766095', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3638938e60>]}
+[0m15:31:20.109624 [info ] [MainThread]: Registered adapter: snowflake=1.12.1
+[0m15:31:20.246212 [debug] [MainThread]: checksum: 933b09aaceab67438c5cd8b1047b0adfff596628142bfbe525a06b36f55dd486, vars: {}, profile: sales_pipeline, target: databricks, version: 1.12.5
+[0m15:31:20.557222 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m15:31:20.558349 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m15:31:20.559229 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m15:31:20.574284 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0edb2b6f-03ea-4507-acf9-98fec1766095', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3625f34860>]}
+[0m15:31:20.795627 [debug] [MainThread]: Wrote artifact WritableManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/manifest.json
+[0m15:31:20.800163 [debug] [MainThread]: Wrote artifact SemanticManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/semantic_manifest.json
+[0m15:31:20.817456 [debug] [MainThread]: Wrote artifact OsiDocument to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/osi_document.json
+[0m15:31:20.837955 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0edb2b6f-03ea-4507-acf9-98fec1766095', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3622ce8230>]}
+[0m15:31:20.839855 [info ] [MainThread]: Found 7 models, 1 snapshot, 15 data tests, 4 sources, 679 macros
+[0m15:31:20.840858 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0edb2b6f-03ea-4507-acf9-98fec1766095', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3623c21bb0>]}
+[0m15:31:20.844548 [info ] [MainThread]: 
+[0m15:31:20.845658 [info ] [MainThread]: Concurrency: 4 threads (target='databricks')
+[0m15:31:20.846456 [info ] [MainThread]: 
+[0m15:31:20.847645 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m15:31:20.854789 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_LUCIEN_MIGRATION_analytics'
+[0m15:31:20.856011 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_LUCIEN_MIGRATION_main'
+[0m15:31:20.857877 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_LUCIEN_MIGRATION_staging'
+[0m15:31:20.884839 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_main"
+[0m15:31:20.889390 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_main: show objects in LUCIEN_MIGRATION.main
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_main"} */;
+[0m15:31:20.888281 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_staging"
+[0m15:31:20.891903 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_staging: show objects in LUCIEN_MIGRATION.staging
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_staging"} */;
+[0m15:31:20.892905 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:31:20.890330 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:31:20.885594 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_analytics"
+[0m15:31:21.091896 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_analytics: show objects in LUCIEN_MIGRATION.analytics
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_analytics"} */;
+[0m15:31:21.097231 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:31:21.276635 [error] [ThreadPool]: Failed to get OCSP response after 1 attempt.
+[0m15:31:21.279223 [error] [ThreadPool]: Failed to get OCSP response after 1 attempt.
+[0m15:31:21.282502 [error] [ThreadPool]: Failed to get OCSP response after 1 attempt.
+[0m15:31:21.578657 [debug] [ThreadPool]: Snowflake adapter: Snowflake query id: 01c76023-3204-993e-0008-2d82000c02b2
+[0m15:31:21.579704 [debug] [ThreadPool]: Snowflake adapter: Snowflake error: 002043 (02000): SQL compilation error:
+Object does not exist, or operation cannot be performed.
+[0m15:31:21.580629 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m15:31:21.581342 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m15:31:21.639556 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 0.747 seconds
+[0m15:31:21.646439 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_staging"
+[0m15:31:21.648317 [debug] [ThreadPool]: SQL status: SUCCESS 5 in 0.551 seconds
+[0m15:31:21.648895 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_staging: show user functions in LUCIEN_MIGRATION.staging
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_staging"} */
+[0m15:31:21.652914 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_analytics"
+[0m15:31:21.654994 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_analytics: show user functions in LUCIEN_MIGRATION.analytics
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_analytics"} */
+[0m15:31:21.754308 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.098 seconds
+[0m15:31:21.755988 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.102 seconds
+[0m15:31:21.763862 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0edb2b6f-03ea-4507-acf9-98fec1766095', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3623093020>]}
+[0m15:31:21.769856 [debug] [Thread-2 (]: Began running node model.sales_pipeline.stg_products
+[0m15:31:21.770707 [debug] [Thread-3 (]: Began running node model.sales_pipeline.stg_sales
+[0m15:31:21.772203 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_LUCIEN_MIGRATION_analytics, now model.sales_pipeline.stg_products)
+[0m15:31:21.774315 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly list_LUCIEN_MIGRATION_staging, now model.sales_pipeline.stg_sales)
+[0m15:31:21.775296 [debug] [Thread-2 (]: Began compiling node model.sales_pipeline.stg_products
+[0m15:31:21.776209 [debug] [Thread-3 (]: Began compiling node model.sales_pipeline.stg_sales
+[0m15:31:21.786085 [debug] [Thread-2 (]: Writing injected SQL for node "model.sales_pipeline.stg_products"
+[0m15:31:21.802792 [debug] [Thread-3 (]: Writing injected SQL for node "model.sales_pipeline.stg_sales"
+[0m15:31:21.876837 [debug] [Thread-2 (]: Began executing node model.sales_pipeline.stg_products
+[0m15:31:21.878277 [debug] [Thread-2 (]: Finished running node model.sales_pipeline.stg_products
+[0m15:31:21.879450 [debug] [Thread-5 (]: Began running node model.sales_pipeline.dim_products
+[0m15:31:21.880136 [debug] [Thread-4 (]: Began running node snapshot.sales_pipeline.scd_products
+[0m15:31:21.880738 [debug] [Thread-2 (]: Began running node test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3
+[0m15:31:21.881728 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.sales_pipeline.dim_products'
+[0m15:31:21.883665 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly list_LUCIEN_MIGRATION_main, now snapshot.sales_pipeline.scd_products)
+[0m15:31:21.884625 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.stg_products, now test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3)
+[0m15:31:21.885458 [debug] [Thread-5 (]: Began compiling node model.sales_pipeline.dim_products
+[0m15:31:21.886293 [debug] [Thread-4 (]: Began compiling node snapshot.sales_pipeline.scd_products
+[0m15:31:21.887101 [debug] [Thread-2 (]: Began compiling node test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3
+[0m15:31:21.889908 [debug] [Thread-5 (]: Writing injected SQL for node "model.sales_pipeline.dim_products"
+[0m15:31:21.893746 [debug] [Thread-4 (]: Writing injected SQL for node "snapshot.sales_pipeline.scd_products"
+[0m15:31:21.916812 [debug] [Thread-2 (]: Writing injected SQL for node "test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3"
+[0m15:31:21.917965 [debug] [Thread-3 (]: Began executing node model.sales_pipeline.stg_sales
+[0m15:31:21.920137 [debug] [Thread-3 (]: Finished running node model.sales_pipeline.stg_sales
+[0m15:31:21.922163 [debug] [Thread-3 (]: Began running node model.sales_pipeline.fct_revenue
+[0m15:31:21.923383 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.stg_sales, now model.sales_pipeline.fct_revenue)
+[0m15:31:21.924384 [debug] [Thread-3 (]: Began compiling node model.sales_pipeline.fct_revenue
+[0m15:31:21.927557 [debug] [Thread-3 (]: Writing injected SQL for node "model.sales_pipeline.fct_revenue"
+[0m15:31:21.952436 [debug] [Thread-2 (]: Began executing node test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3
+[0m15:31:21.954342 [debug] [Thread-2 (]: Finished running node test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3
+[0m15:31:21.958326 [debug] [Thread-2 (]: Began running node model.sales_pipeline.fct_sales
+[0m15:31:21.959666 [debug] [Thread-5 (]: Began executing node model.sales_pipeline.dim_products
+[0m15:31:21.960671 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3, now model.sales_pipeline.fct_sales)
+[0m15:31:21.962177 [debug] [Thread-5 (]: Finished running node model.sales_pipeline.dim_products
+[0m15:31:21.964331 [debug] [Thread-5 (]: Began running node model.sales_pipeline.vw_sales_by_prod_ctgry
+[0m15:31:21.963215 [debug] [Thread-2 (]: Began compiling node model.sales_pipeline.fct_sales
+[0m15:31:21.967217 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.dim_products, now model.sales_pipeline.vw_sales_by_prod_ctgry)
+[0m15:31:21.971355 [debug] [Thread-2 (]: Writing injected SQL for node "model.sales_pipeline.fct_sales"
+[0m15:31:21.972895 [debug] [Thread-5 (]: Began compiling node model.sales_pipeline.vw_sales_by_prod_ctgry
+[0m15:31:21.973757 [debug] [Thread-4 (]: Began executing node snapshot.sales_pipeline.scd_products
+[0m15:31:21.982622 [debug] [Thread-4 (]: Finished running node snapshot.sales_pipeline.scd_products
+[0m15:31:21.979700 [debug] [Thread-5 (]: Writing injected SQL for node "model.sales_pipeline.vw_sales_by_prod_ctgry"
+[0m15:31:21.983621 [debug] [Thread-3 (]: Began executing node model.sales_pipeline.fct_revenue
+[0m15:31:21.984684 [debug] [Thread-4 (]: Began running node test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b
+[0m15:31:21.991093 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly snapshot.sales_pipeline.scd_products, now test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b)
+[0m15:31:21.992364 [debug] [Thread-4 (]: Began compiling node test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b
+[0m15:31:21.989099 [debug] [Thread-3 (]: Finished running node model.sales_pipeline.fct_revenue
+[0m15:31:22.008946 [debug] [Thread-3 (]: Began running node test.sales_pipeline.not_null_dim_products_price.93519fc0ed
+[0m15:31:22.004415 [debug] [Thread-4 (]: Writing injected SQL for node "test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b"
+[0m15:31:22.010549 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.fct_revenue, now test.sales_pipeline.not_null_dim_products_price.93519fc0ed)
+[0m15:31:22.012280 [debug] [Thread-3 (]: Began compiling node test.sales_pipeline.not_null_dim_products_price.93519fc0ed
+[0m15:31:22.013377 [debug] [Thread-2 (]: Began executing node model.sales_pipeline.fct_sales
+[0m15:31:22.030249 [debug] [Thread-2 (]: Finished running node model.sales_pipeline.fct_sales
+[0m15:31:22.027417 [debug] [Thread-3 (]: Writing injected SQL for node "test.sales_pipeline.not_null_dim_products_price.93519fc0ed"
+[0m15:31:22.031407 [debug] [Thread-2 (]: Began running node test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1
+[0m15:31:22.033054 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.fct_sales, now test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1)
+[0m15:31:22.034108 [debug] [Thread-2 (]: Began compiling node test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1
+[0m15:31:22.039293 [debug] [Thread-5 (]: Began executing node model.sales_pipeline.vw_sales_by_prod_ctgry
+[0m15:31:22.050504 [debug] [Thread-2 (]: Writing injected SQL for node "test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1"
+[0m15:31:22.052423 [debug] [Thread-5 (]: Finished running node model.sales_pipeline.vw_sales_by_prod_ctgry
+[0m15:31:22.054283 [debug] [Thread-4 (]: Began executing node test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b
+[0m15:31:22.055345 [debug] [Thread-5 (]: Began running node test.sales_pipeline.not_null_dim_products_product_name.991aec73f3
+[0m15:31:22.059827 [debug] [Thread-4 (]: Finished running node test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b
+[0m15:31:22.061166 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.vw_sales_by_prod_ctgry, now test.sales_pipeline.not_null_dim_products_product_name.991aec73f3)
+[0m15:31:22.069710 [debug] [Thread-4 (]: Began running node model.sales_pipeline.vw_mom_revenue
+[0m15:31:22.071184 [debug] [Thread-5 (]: Began compiling node test.sales_pipeline.not_null_dim_products_product_name.991aec73f3
+[0m15:31:22.072666 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b, now model.sales_pipeline.vw_mom_revenue)
+[0m15:31:22.084049 [debug] [Thread-5 (]: Writing injected SQL for node "test.sales_pipeline.not_null_dim_products_product_name.991aec73f3"
+[0m15:31:22.085665 [debug] [Thread-4 (]: Began compiling node model.sales_pipeline.vw_mom_revenue
+[0m15:31:22.086819 [debug] [Thread-3 (]: Began executing node test.sales_pipeline.not_null_dim_products_price.93519fc0ed
+[0m15:31:22.093373 [debug] [Thread-3 (]: Finished running node test.sales_pipeline.not_null_dim_products_price.93519fc0ed
+[0m15:31:22.094789 [debug] [Thread-3 (]: Began running node test.sales_pipeline.assert_negative_revenue
+[0m15:31:22.090617 [debug] [Thread-4 (]: Writing injected SQL for node "model.sales_pipeline.vw_mom_revenue"
+[0m15:31:22.097398 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_dim_products_price.93519fc0ed, now test.sales_pipeline.assert_negative_revenue)
+[0m15:31:22.100772 [debug] [Thread-3 (]: Began compiling node test.sales_pipeline.assert_negative_revenue
+[0m15:31:22.098597 [debug] [Thread-2 (]: Began executing node test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1
+[0m15:31:22.105232 [debug] [Thread-2 (]: Finished running node test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1
+[0m15:31:22.103766 [debug] [Thread-3 (]: Writing injected SQL for node "test.sales_pipeline.assert_negative_revenue"
+[0m15:31:22.106301 [debug] [Thread-2 (]: Began running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77
+[0m15:31:22.108653 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1, now test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77)
+[0m15:31:22.109616 [debug] [Thread-2 (]: Began compiling node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77
+[0m15:31:22.122236 [debug] [Thread-2 (]: Writing injected SQL for node "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77"
+[0m15:31:22.123872 [debug] [Thread-5 (]: Began executing node test.sales_pipeline.not_null_dim_products_product_name.991aec73f3
+[0m15:31:22.128403 [debug] [Thread-5 (]: Finished running node test.sales_pipeline.not_null_dim_products_product_name.991aec73f3
+[0m15:31:22.129386 [debug] [Thread-5 (]: Began running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb
+[0m15:31:22.130666 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_dim_products_product_name.991aec73f3, now test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb)
+[0m15:31:22.132146 [debug] [Thread-5 (]: Began compiling node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb
+[0m15:31:22.125248 [debug] [Thread-4 (]: Began executing node model.sales_pipeline.vw_mom_revenue
+[0m15:31:22.141081 [debug] [Thread-5 (]: Writing injected SQL for node "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb"
+[0m15:31:22.142520 [debug] [Thread-4 (]: Finished running node model.sales_pipeline.vw_mom_revenue
+[0m15:31:22.144057 [debug] [Thread-4 (]: Began running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0
+[0m15:31:22.145080 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.vw_mom_revenue, now test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0)
+[0m15:31:22.146016 [debug] [Thread-4 (]: Began compiling node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0
+[0m15:31:22.155002 [debug] [Thread-4 (]: Writing injected SQL for node "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0"
+[0m15:31:22.156608 [debug] [Thread-3 (]: Began executing node test.sales_pipeline.assert_negative_revenue
+[0m15:31:22.158120 [debug] [Thread-3 (]: Finished running node test.sales_pipeline.assert_negative_revenue
+[0m15:31:22.159104 [debug] [Thread-3 (]: Began running node test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce
+[0m15:31:22.160212 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.assert_negative_revenue, now test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce)
+[0m15:31:22.161215 [debug] [Thread-3 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce
+[0m15:31:22.170022 [debug] [Thread-3 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce"
+[0m15:31:22.171486 [debug] [Thread-2 (]: Began executing node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77
+[0m15:31:22.173050 [debug] [Thread-2 (]: Finished running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77
+[0m15:31:22.174114 [debug] [Thread-2 (]: Began running node test.sales_pipeline.not_null_fct_sales_order_id.4987638769
+[0m15:31:22.175310 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77, now test.sales_pipeline.not_null_fct_sales_order_id.4987638769)
+[0m15:31:22.176151 [debug] [Thread-2 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_order_id.4987638769
+[0m15:31:22.184590 [debug] [Thread-2 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_order_id.4987638769"
+[0m15:31:22.186391 [debug] [Thread-5 (]: Began executing node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb
+[0m15:31:22.187825 [debug] [Thread-5 (]: Finished running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb
+[0m15:31:22.188808 [debug] [Thread-5 (]: Began running node test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84
+[0m15:31:22.189783 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb, now test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84)
+[0m15:31:22.190563 [debug] [Thread-5 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84
+[0m15:31:22.199375 [debug] [Thread-5 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84"
+[0m15:31:22.207067 [debug] [Thread-4 (]: Began executing node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0
+[0m15:31:22.208692 [debug] [Thread-4 (]: Finished running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0
+[0m15:31:22.209796 [debug] [Thread-4 (]: Began running node test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa
+[0m15:31:22.210947 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0, now test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa)
+[0m15:31:22.214924 [debug] [Thread-4 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa
+[0m15:31:22.223210 [debug] [Thread-4 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa"
+[0m15:31:22.227988 [debug] [Thread-3 (]: Began executing node test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce
+[0m15:31:22.229412 [debug] [Thread-3 (]: Finished running node test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce
+[0m15:31:22.230683 [debug] [Thread-3 (]: Began running node test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2
+[0m15:31:22.232751 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce, now test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2)
+[0m15:31:22.233769 [debug] [Thread-3 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2
+[0m15:31:22.242338 [debug] [Thread-3 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2"
+[0m15:31:22.251378 [debug] [Thread-2 (]: Began executing node test.sales_pipeline.not_null_fct_sales_order_id.4987638769
+[0m15:31:22.253082 [debug] [Thread-2 (]: Finished running node test.sales_pipeline.not_null_fct_sales_order_id.4987638769
+[0m15:31:22.254012 [debug] [Thread-2 (]: Began running node test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216
+[0m15:31:22.254924 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_fct_sales_order_id.4987638769, now test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216)
+[0m15:31:22.255851 [debug] [Thread-2 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216
+[0m15:31:22.264539 [debug] [Thread-2 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216"
+[0m15:31:22.270132 [debug] [Thread-5 (]: Began executing node test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84
+[0m15:31:22.271500 [debug] [Thread-5 (]: Finished running node test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84
+[0m15:31:22.290600 [debug] [Thread-4 (]: Began executing node test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa
+[0m15:31:22.292200 [debug] [Thread-4 (]: Finished running node test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa
+[0m15:31:22.310984 [debug] [Thread-3 (]: Began executing node test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2
+[0m15:31:22.312561 [debug] [Thread-3 (]: Finished running node test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2
+[0m15:31:22.330665 [debug] [Thread-2 (]: Began executing node test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216
+[0m15:31:22.332085 [debug] [Thread-2 (]: Finished running node test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216
+[0m15:31:22.334023 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m15:31:22.335153 [debug] [MainThread]: Connection 'test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216' was left open.
+[0m15:31:22.335940 [debug] [MainThread]: On test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216: Close
+[0m15:31:22.421836 [debug] [MainThread]: Connection 'test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa' was left open.
+[0m15:31:22.423220 [debug] [MainThread]: On test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa: Close
+[0m15:31:23.170114 [debug] [MainThread]: Connection 'test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2' was left open.
+[0m15:31:23.171416 [debug] [MainThread]: On test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2: Close
+[0m15:31:23.253868 [debug] [MainThread]: Connection 'test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84' was properly closed.
+[0m15:31:23.257481 [debug] [MainThread]: Command end result
+[0m15:31:23.335598 [debug] [MainThread]: Wrote artifact WritableManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/manifest.json
+[0m15:31:23.342426 [debug] [MainThread]: Wrote artifact SemanticManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/semantic_manifest.json
+[0m15:31:23.348037 [debug] [MainThread]: Wrote artifact OsiDocument to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/osi_document.json
+[0m15:31:23.385624 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/run_results.json
+[0m15:31:23.387366 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": true, "command_wall_clock_time": 4.5273666, "process_in_blocks": "176", "process_kernel_time": 0.423404, "process_mem_max_rss": "259280", "process_out_blocks": "8", "process_user_time": 5.16363}
+[0m15:31:23.388777 [debug] [MainThread]: Command `dbt compile` succeeded at 15:31:23.388616 after 4.53 seconds
+[0m15:31:23.389674 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3638e336e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3623c84da0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3622d0e480>]}
+[0m15:31:23.390608 [debug] [MainThread]: Flushing usage events
+[0m15:31:23.394494 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:31:27.249625 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3c1b5d02c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3c1a6a6240>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3c1b6157f0>]}
+
+
+============================== 15:31:27.253851 | 6150d7d9-dcea-4284-a855-0387794e289a ==============================
+[0m15:31:27.253851 [info ] [MainThread]: Running with dbt=1.12.5
+[0m15:31:27.255062 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'warn_error': 'None', 'use_experimental_parser': 'False', 'quiet': 'False', 'use_colors': 'True', 'write_json': 'True', 'log_cache_events': 'False', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'cache_selected_only': 'False', 'empty': 'False', 'log_path': '/Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'invocation_command': 'dbt build --select +path:models/marts', 'debug': 'False', 'version_check': 'True', 'partial_parse': 'True', 'introspect': 'True', 'log_format': 'default', 'profiles_dir': '/tmp/lake_house_dbt_2gl2lzsm', 'target_path': 'None', 'no_print': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m15:31:28.041070 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m15:31:28.043504 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m15:31:28.044413 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m15:31:28.463341 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3c040c1490>]}
+[0m15:31:28.547531 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3c04e6f380>]}
+[0m15:31:28.549416 [info ] [MainThread]: Registered adapter: snowflake=1.12.1
+[0m15:31:28.725180 [debug] [MainThread]: checksum: 933b09aaceab67438c5cd8b1047b0adfff596628142bfbe525a06b36f55dd486, vars: {}, profile: sales_pipeline, target: databricks, version: 1.12.5
+[0m15:31:29.001264 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m15:31:29.002321 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m15:31:29.004145 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m15:31:29.017340 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3c04e95a90>]}
+[0m15:31:29.272018 [debug] [MainThread]: Wrote artifact WritableManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/manifest.json
+[0m15:31:29.276698 [debug] [MainThread]: Wrote artifact SemanticManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/semantic_manifest.json
+[0m15:31:29.292121 [debug] [MainThread]: Wrote artifact OsiDocument to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/osi_document.json
+[0m15:31:29.318849 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3bffbe7bf0>]}
+[0m15:31:29.319967 [info ] [MainThread]: Found 7 models, 1 snapshot, 15 data tests, 4 sources, 679 macros
+[0m15:31:29.335426 [info ] [MainThread]: 
+[0m15:31:29.336554 [info ] [MainThread]: Concurrency: 4 threads (target='databricks')
+[0m15:31:29.337472 [info ] [MainThread]: 
+[0m15:31:29.338539 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m15:31:29.344830 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_LUCIEN_MIGRATION'
+[0m15:31:29.345827 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_LUCIEN_MIGRATION'
+[0m15:31:29.363950 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION"
+[0m15:31:29.365973 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION"
+[0m15:31:29.367080 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION: show terse schemas in database LUCIEN_MIGRATION
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION"} */
+[0m15:31:29.368105 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION: show terse schemas in database LUCIEN_MIGRATION
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION"} */
+[0m15:31:29.368833 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:31:29.369630 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:31:29.658591 [error] [ThreadPool]: Failed to get OCSP response after 1 attempt.
+[0m15:31:29.668579 [error] [ThreadPool]: Failed to get OCSP response after 1 attempt.
+[0m15:31:30.032946 [debug] [ThreadPool]: SQL status: SUCCESS 5 in 0.663 seconds
+[0m15:31:30.050529 [debug] [ThreadPool]: SQL status: SUCCESS 5 in 0.682 seconds
+[0m15:31:30.054415 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_LUCIEN_MIGRATION, now list_LUCIEN_MIGRATION_analytics)
+[0m15:31:30.055327 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_LUCIEN_MIGRATION, now list_LUCIEN_MIGRATION_main)
+[0m15:31:30.056272 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_LUCIEN_MIGRATION_staging'
+[0m15:31:30.070156 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_analytics"
+[0m15:31:30.072328 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_main"
+[0m15:31:30.075707 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_staging"
+[0m15:31:30.076661 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_analytics: show objects in LUCIEN_MIGRATION.analytics
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_analytics"} */;
+[0m15:31:30.077472 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_main: show objects in LUCIEN_MIGRATION.main
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_main"} */;
+[0m15:31:30.078312 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_staging: show objects in LUCIEN_MIGRATION.staging
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_staging"} */;
+[0m15:31:30.081914 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:31:30.177006 [debug] [ThreadPool]: Snowflake adapter: Snowflake query id: 01c76023-3204-9430-0008-2d82000afc9e
+[0m15:31:30.178261 [debug] [ThreadPool]: Snowflake adapter: Snowflake error: 002043 (02000): SQL compilation error:
+Object does not exist, or operation cannot be performed.
+[0m15:31:30.179514 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m15:31:30.180449 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m15:31:30.212247 [debug] [ThreadPool]: SQL status: SUCCESS 5 in 0.133 seconds
+[0m15:31:30.219831 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_analytics"
+[0m15:31:30.221070 [error] [ThreadPool]: Failed to get OCSP response after 1 attempt.
+[0m15:31:30.221932 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_analytics: show user functions in LUCIEN_MIGRATION.analytics
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_analytics"} */
+[0m15:31:30.305965 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.081 seconds
+[0m15:31:30.569718 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 0.488 seconds
+[0m15:31:30.573744 [debug] [ThreadPool]: Using snowflake connection "list_LUCIEN_MIGRATION_staging"
+[0m15:31:30.574742 [debug] [ThreadPool]: On list_LUCIEN_MIGRATION_staging: show user functions in LUCIEN_MIGRATION.staging
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "connection_name": "list_LUCIEN_MIGRATION_staging"} */
+[0m15:31:30.667387 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.092 seconds
+[0m15:31:30.670747 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3bffe5b3e0>]}
+[0m15:31:30.674516 [debug] [Thread-2 (]: Began running node model.sales_pipeline.stg_products
+[0m15:31:30.675234 [debug] [Thread-3 (]: Began running node model.sales_pipeline.stg_sales
+[0m15:31:30.676677 [info ] [Thread-2 (]: 1 of 22 START sql table model staging.stg_products ............................. [RUN]
+[0m15:31:30.678757 [info ] [Thread-3 (]: 2 of 22 START sql table model staging.stg_sales ................................ [RUN]
+[0m15:31:30.679689 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_LUCIEN_MIGRATION_staging, now model.sales_pipeline.stg_products)
+[0m15:31:30.680609 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly list_LUCIEN_MIGRATION_analytics, now model.sales_pipeline.stg_sales)
+[0m15:31:30.681465 [debug] [Thread-2 (]: Began compiling node model.sales_pipeline.stg_products
+[0m15:31:30.682261 [debug] [Thread-3 (]: Began compiling node model.sales_pipeline.stg_sales
+[0m15:31:30.693879 [debug] [Thread-2 (]: Writing injected SQL for node "model.sales_pipeline.stg_products"
+[0m15:31:30.709816 [debug] [Thread-3 (]: Writing injected SQL for node "model.sales_pipeline.stg_sales"
+[0m15:31:30.712509 [debug] [Thread-3 (]: Began executing node model.sales_pipeline.stg_sales
+[0m15:31:30.713411 [debug] [Thread-2 (]: Began executing node model.sales_pipeline.stg_products
+[0m15:31:30.761972 [debug] [Thread-3 (]: Writing runtime sql for node "model.sales_pipeline.stg_sales"
+[0m15:31:30.762836 [debug] [Thread-2 (]: Writing runtime sql for node "model.sales_pipeline.stg_products"
+[0m15:31:30.853405 [debug] [Thread-3 (]: Using snowflake connection "model.sales_pipeline.stg_sales"
+[0m15:31:30.854477 [debug] [Thread-3 (]: On model.sales_pipeline.stg_sales: create or replace transient table LUCIEN_MIGRATION.staging.stg_sales
+    
+    
+    
+    
+    
+
+    as (
+
+WITH source_sales AS (
+    SELECT
+        *
+    FROM LUCIEN_MIGRATION.RAW.raw_sales
+),
+RENAMED AS (
+    SELECT
+        md5(cast(coalesce(cast(sales_id as TEXT), '_dbt_utils_surrogate_key_null_') || '-' || coalesce(cast(product_id as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) as order_id,
+        product_id,
+        cust_id as customer_id,
+        qty as quantity,
+        case when unit_price IS NULL then 0
+            else cast(unit_price as decimal(10,2))
+        end as unit_price,
+        case when total_amt IS NULL then 0
+            else cast(total_amt as decimal(10,2))
+        end as total_amt,
+        cast(sale_date as timestamp) as dt_ordered,
+        updated_at as last_updated,
+        convert_timezone('UTC', current_timestamp()) as dbt_updated_at
+    FROM source_sales
+)
+SELECT *
+FROM RENAMED
+    )
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "model.sales_pipeline.stg_sales"} */;
+[0m15:31:30.875931 [debug] [Thread-2 (]: Using snowflake connection "model.sales_pipeline.stg_products"
+[0m15:31:30.877385 [debug] [Thread-2 (]: On model.sales_pipeline.stg_products: create or replace transient table LUCIEN_MIGRATION.staging.stg_products
+    
+    
+    
+    
+    
+
+    as (
+
+WITH source_data AS (
+    SELECT
+        *
+    FROM LUCIEN_MIGRATION.RAW.raw_products
+    QUALIFY row_number() over (partition by updated_at, id order by updated_at desc) = 1
+
+), 
+renamed as (
+    SELECT
+        id as product_id,
+        upper(title) as product_name,
+        description as product_description,
+        price ,
+        category ,
+        updated_at as last_updated,
+        convert_timezone('UTC', current_timestamp()) as dbt_updated_at
+    FROM source_data
+  
+)
+
+select * from renamed
+    )
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "model.sales_pipeline.stg_products"} */;
+[0m15:31:31.676643 [debug] [Thread-2 (]: SQL status: SUCCESS 20 in 0.798 seconds
+[0m15:31:31.705051 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3c1afa50a0>]}
+[0m15:31:31.706533 [info ] [Thread-2 (]: 1 of 22 OK created sql table model staging.stg_products ........................ [[32mSUCCESS 20[0m in 1.02s]
+[0m15:31:31.707624 [debug] [Thread-2 (]: Finished running node model.sales_pipeline.stg_products
+[0m15:31:31.708693 [debug] [Thread-5 (]: Began running node test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3
+[0m15:31:31.710612 [info ] [Thread-5 (]: 3 of 22 START test not_null_stg_products_product_id ............................ [RUN]
+[0m15:31:31.711862 [debug] [Thread-5 (]: Acquiring new snowflake connection 'test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3'
+[0m15:31:31.712850 [debug] [Thread-5 (]: Began compiling node test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3
+[0m15:31:31.731383 [debug] [Thread-5 (]: Writing injected SQL for node "test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3"
+[0m15:31:31.734378 [debug] [Thread-5 (]: Began executing node test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3
+[0m15:31:31.755894 [debug] [Thread-5 (]: Writing runtime sql for node "test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3"
+[0m15:31:31.782039 [debug] [Thread-3 (]: SQL status: SUCCESS 10000 in 0.927 seconds
+[0m15:31:31.786066 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3bff666480>]}
+[0m15:31:31.787934 [info ] [Thread-3 (]: 2 of 22 OK created sql table model staging.stg_sales ........................... [[32mSUCCESS 10000[0m in 1.11s]
+[0m15:31:31.790838 [debug] [Thread-3 (]: Finished running node model.sales_pipeline.stg_sales
+[0m15:31:31.792445 [debug] [Thread-2 (]: Began running node test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b
+[0m15:31:31.793720 [debug] [Thread-5 (]: Using snowflake connection "test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3"
+[0m15:31:31.794651 [info ] [Thread-2 (]: 4 of 22 START test not_null_stg_sales_order_id ................................. [RUN]
+[0m15:31:31.795767 [debug] [Thread-5 (]: On test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select product_id
+from LUCIEN_MIGRATION.staging.stg_products
+where product_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3"} */
+[0m15:31:31.797052 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.stg_products, now test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b)
+[0m15:31:31.798112 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m15:31:31.799250 [debug] [Thread-2 (]: Began compiling node test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b
+[0m15:31:31.871038 [debug] [Thread-2 (]: Writing injected SQL for node "test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b"
+[0m15:31:31.874868 [debug] [Thread-2 (]: Began executing node test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b
+[0m15:31:31.878070 [debug] [Thread-2 (]: Writing runtime sql for node "test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b"
+[0m15:31:31.914453 [debug] [Thread-2 (]: Using snowflake connection "test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b"
+[0m15:31:31.915647 [debug] [Thread-2 (]: On test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from LUCIEN_MIGRATION.staging.stg_sales
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b"} */
+[0m15:31:31.945598 [error] [Thread-5 (]: Failed to get OCSP response after 1 attempt.
+[0m15:31:32.144214 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.226 seconds
+[0m15:31:32.149303 [info ] [Thread-2 (]: 4 of 22 PASS not_null_stg_sales_order_id ....................................... [[32mPASS[0m in 0.35s]
+[0m15:31:32.150591 [debug] [Thread-2 (]: Finished running node test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b
+[0m15:31:32.151706 [debug] [Thread-3 (]: Began running node model.sales_pipeline.fct_sales
+[0m15:31:32.152713 [info ] [Thread-3 (]: 5 of 22 START sql table model analytics.fct_sales .............................. [RUN]
+[0m15:31:32.153607 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.stg_sales, now model.sales_pipeline.fct_sales)
+[0m15:31:32.154328 [debug] [Thread-3 (]: Began compiling node model.sales_pipeline.fct_sales
+[0m15:31:32.156771 [debug] [Thread-3 (]: Writing injected SQL for node "model.sales_pipeline.fct_sales"
+[0m15:31:32.158972 [debug] [Thread-3 (]: Began executing node model.sales_pipeline.fct_sales
+[0m15:31:32.162137 [debug] [Thread-3 (]: Writing runtime sql for node "model.sales_pipeline.fct_sales"
+[0m15:31:32.198777 [debug] [Thread-3 (]: Using snowflake connection "model.sales_pipeline.fct_sales"
+[0m15:31:32.199710 [debug] [Thread-3 (]: On model.sales_pipeline.fct_sales: create or replace transient table LUCIEN_MIGRATION.analytics.fct_sales
+    
+    
+    
+    
+    
+
+    as (with staged_sales as (
+    select
+       *
+    from LUCIEN_MIGRATION.staging.stg_sales
+),
+final as (
+    select
+        order_id,
+        product_id,
+        customer_id,
+        quantity,
+        unit_price,
+        total_amt,
+        dt_ordered,
+        last_updated
+    from staged_sales
+)
+select * from final
+    )
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "model.sales_pipeline.fct_sales"} */;
+[0m15:31:32.865494 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.067 seconds
+[0m15:31:32.870475 [info ] [Thread-5 (]: 3 of 22 PASS not_null_stg_products_product_id .................................. [[32mPASS[0m in 1.16s]
+[0m15:31:32.872156 [debug] [Thread-5 (]: Finished running node test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3
+[0m15:31:32.873539 [debug] [Thread-2 (]: Began running node model.sales_pipeline.dim_products
+[0m15:31:32.874370 [debug] [Thread-4 (]: Began running node model.sales_pipeline.fct_revenue
+[0m15:31:32.874989 [debug] [Thread-5 (]: Began running node model.sales_pipeline.vw_sales_by_prod_ctgry
+[0m15:31:32.875975 [info ] [Thread-2 (]: 6 of 22 START sql table model analytics.dim_products ........................... [RUN]
+[0m15:31:32.877928 [info ] [Thread-4 (]: 7 of 22 START sql view model analytics.fct_revenue ............................. [RUN]
+[0m15:31:32.878884 [info ] [Thread-5 (]: 8 of 22 START sql view model analytics.vw_sales_by_prod_ctgry .................. [RUN]
+[0m15:31:32.879794 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_stg_sales_order_id.5d52c19c3b, now model.sales_pipeline.dim_products)
+[0m15:31:32.880681 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly list_LUCIEN_MIGRATION_main, now model.sales_pipeline.fct_revenue)
+[0m15:31:32.881573 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_stg_products_product_id.6373b0acf3, now model.sales_pipeline.vw_sales_by_prod_ctgry)
+[0m15:31:32.882395 [debug] [Thread-2 (]: Began compiling node model.sales_pipeline.dim_products
+[0m15:31:32.883259 [debug] [Thread-4 (]: Began compiling node model.sales_pipeline.fct_revenue
+[0m15:31:32.884076 [debug] [Thread-5 (]: Began compiling node model.sales_pipeline.vw_sales_by_prod_ctgry
+[0m15:31:32.886654 [debug] [Thread-2 (]: Writing injected SQL for node "model.sales_pipeline.dim_products"
+[0m15:31:32.889964 [debug] [Thread-4 (]: Writing injected SQL for node "model.sales_pipeline.fct_revenue"
+[0m15:31:32.893011 [debug] [Thread-5 (]: Writing injected SQL for node "model.sales_pipeline.vw_sales_by_prod_ctgry"
+[0m15:31:32.895370 [debug] [Thread-2 (]: Began executing node model.sales_pipeline.dim_products
+[0m15:31:32.895981 [debug] [Thread-4 (]: Began executing node model.sales_pipeline.fct_revenue
+[0m15:31:32.898949 [debug] [Thread-2 (]: Writing runtime sql for node "model.sales_pipeline.dim_products"
+[0m15:31:32.899644 [debug] [Thread-5 (]: Began executing node model.sales_pipeline.vw_sales_by_prod_ctgry
+[0m15:31:32.922316 [debug] [Thread-4 (]: Writing runtime sql for node "model.sales_pipeline.fct_revenue"
+[0m15:31:32.926009 [debug] [Thread-5 (]: Writing runtime sql for node "model.sales_pipeline.vw_sales_by_prod_ctgry"
+[0m15:31:32.947159 [debug] [Thread-2 (]: Using snowflake connection "model.sales_pipeline.dim_products"
+[0m15:31:32.948219 [debug] [Thread-2 (]: On model.sales_pipeline.dim_products: create or replace transient table LUCIEN_MIGRATION.analytics.dim_products
+    
+    
+    
+    
+    
+
+    as (with staged_products as (
+    select * from LUCIEN_MIGRATION.staging.stg_products
+),
+final as (
+    select
+        product_id,
+        product_name,
+        product_description,
+        price,  
+        category,
+        case 
+            when price < 20 then 'Low'
+            when price >= 20 and price < 100 then 'Medium'
+            else 'High'
+        end as price_level,
+        last_updated
+    from staged_products
+)
+select * from final
+    )
+
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "model.sales_pipeline.dim_products"} */;
+[0m15:31:32.960536 [debug] [Thread-3 (]: SQL status: SUCCESS 10000 in 0.760 seconds
+[0m15:31:32.965221 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3bff6f3080>]}
+[0m15:31:32.967588 [info ] [Thread-3 (]: 5 of 22 OK created sql table model analytics.fct_sales ......................... [[32mSUCCESS 10000[0m in 0.81s]
+[0m15:31:32.973073 [debug] [Thread-3 (]: Finished running node model.sales_pipeline.fct_sales
+[0m15:31:32.974449 [debug] [Thread-3 (]: Began running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77
+[0m15:31:32.975442 [info ] [Thread-3 (]: 9 of 22 START test dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0  [RUN]
+[0m15:31:32.976782 [debug] [Thread-4 (]: Using snowflake connection "model.sales_pipeline.fct_revenue"
+[0m15:31:32.977672 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.fct_sales, now test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77)
+[0m15:31:32.978587 [debug] [Thread-4 (]: On model.sales_pipeline.fct_revenue: create or replace   view LUCIEN_MIGRATION.analytics.fct_revenue
+  
+  
+  
+  
+  as (
+    -- models/marts/fct_revenue.sql
+
+
+WITH sales AS (
+    SELECT * FROM LUCIEN_MIGRATION.staging.stg_sales
+),
+
+products AS (
+    SELECT * FROM LUCIEN_MIGRATION.staging.stg_products
+)
+
+SELECT 
+    sales.order_id,
+    sales.product_id,
+    sales.dt_ordered AS date,
+    sales.quantity,
+    products.price,
+    (sales.quantity * products.price) AS revenue
+FROM sales
+LEFT JOIN products ON sales.product_id = products.product_id
+  )
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "model.sales_pipeline.fct_revenue"} */;
+[0m15:31:32.979489 [debug] [Thread-3 (]: Began compiling node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77
+[0m15:31:32.993010 [debug] [Thread-3 (]: Writing injected SQL for node "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77"
+[0m15:31:32.995302 [debug] [Thread-3 (]: Began executing node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77
+[0m15:31:32.997709 [debug] [Thread-3 (]: Writing runtime sql for node "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77"
+[0m15:31:32.999095 [debug] [Thread-5 (]: Using snowflake connection "model.sales_pipeline.vw_sales_by_prod_ctgry"
+[0m15:31:33.000341 [debug] [Thread-5 (]: On model.sales_pipeline.vw_sales_by_prod_ctgry: create or replace   view LUCIEN_MIGRATION.analytics.vw_sales_by_prod_ctgry
+  
+  
+  
+  
+  as (
+    
+
+-- models/marts/vw_sales_by_prod_ctgry.sql
+WITH sales AS (
+    SELECT * FROM LUCIEN_MIGRATION.staging.stg_sales
+),
+
+products AS (
+    SELECT * FROM LUCIEN_MIGRATION.staging.stg_products
+)
+
+SELECT 
+    products.category,
+    SUM(sales.quantity * products.price) AS total_sales
+FROM sales
+LEFT JOIN products ON sales.product_id = products.product_id
+GROUP BY 1
+  )
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "model.sales_pipeline.vw_sales_by_prod_ctgry"} */;
+[0m15:31:33.033300 [debug] [Thread-3 (]: Using snowflake connection "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77"
+[0m15:31:33.034282 [debug] [Thread-3 (]: On test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+with meet_condition as(
+  select *
+  from LUCIEN_MIGRATION.analytics.fct_sales
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not quantity >= 0
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not quantity <= 99999999999999
+)
+
+select *
+from validation_errors
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77"} */
+[0m15:31:33.227135 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.192 seconds
+[0m15:31:33.230282 [info ] [Thread-3 (]: 9 of 22 PASS dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0 .... [[32mPASS[0m in 0.25s]
+[0m15:31:33.231732 [debug] [Thread-3 (]: Finished running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77
+[0m15:31:33.232754 [debug] [Thread-3 (]: Began running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb
+[0m15:31:33.233766 [info ] [Thread-3 (]: 10 of 22 START test dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0  [RUN]
+[0m15:31:33.235394 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.dbt_utils_accepted_range_fct_sales_quantity__99999999999999__0.ac9502cf77, now test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb)
+[0m15:31:33.236287 [debug] [Thread-3 (]: Began compiling node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb
+[0m15:31:33.244755 [debug] [Thread-3 (]: Writing injected SQL for node "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb"
+[0m15:31:33.248090 [debug] [Thread-3 (]: Began executing node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb
+[0m15:31:33.251879 [debug] [Thread-3 (]: Writing runtime sql for node "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb"
+[0m15:31:33.279744 [debug] [Thread-3 (]: Using snowflake connection "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb"
+[0m15:31:33.281067 [debug] [Thread-3 (]: On test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+with meet_condition as(
+  select *
+  from LUCIEN_MIGRATION.analytics.fct_sales
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not total_amt >= 0
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not total_amt <= 99999999999999
+)
+
+select *
+from validation_errors
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb"} */
+[0m15:31:33.295341 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.315 seconds
+[0m15:31:33.299774 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3be7527da0>]}
+[0m15:31:33.302101 [info ] [Thread-4 (]: 7 of 22 OK created sql view model analytics.fct_revenue ........................ [[32mSUCCESS 1[0m in 0.42s]
+[0m15:31:33.305892 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.305 seconds
+[0m15:31:33.310191 [debug] [Thread-5 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3bfe99fc80>]}
+[0m15:31:33.311460 [info ] [Thread-5 (]: 8 of 22 OK created sql view model analytics.vw_sales_by_prod_ctgry ............. [[32mSUCCESS 1[0m in 0.43s]
+[0m15:31:33.312633 [debug] [Thread-5 (]: Finished running node model.sales_pipeline.vw_sales_by_prod_ctgry
+[0m15:31:33.313512 [debug] [Thread-5 (]: Began running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0
+[0m15:31:33.306948 [debug] [Thread-4 (]: Finished running node model.sales_pipeline.fct_revenue
+[0m15:31:33.315223 [debug] [Thread-4 (]: Began running node test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce
+[0m15:31:33.314333 [info ] [Thread-5 (]: 11 of 22 START test dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0  [RUN]
+[0m15:31:33.317260 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.vw_sales_by_prod_ctgry, now test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0)
+[0m15:31:33.317991 [debug] [Thread-5 (]: Began compiling node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0
+[0m15:31:33.316312 [info ] [Thread-4 (]: 12 of 22 START test not_null_fct_sales_customer_id ............................. [RUN]
+[0m15:31:33.329071 [debug] [Thread-5 (]: Writing injected SQL for node "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0"
+[0m15:31:33.330097 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.fct_revenue, now test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce)
+[0m15:31:33.331889 [debug] [Thread-4 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce
+[0m15:31:33.347282 [debug] [Thread-4 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce"
+[0m15:31:33.350230 [debug] [Thread-5 (]: Began executing node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0
+[0m15:31:33.354928 [debug] [Thread-5 (]: Writing runtime sql for node "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0"
+[0m15:31:33.357224 [debug] [Thread-4 (]: Began executing node test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce
+[0m15:31:33.361337 [debug] [Thread-4 (]: Writing runtime sql for node "test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce"
+[0m15:31:33.385841 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.104 seconds
+[0m15:31:33.399616 [info ] [Thread-3 (]: 10 of 22 PASS dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0 .. [[32mPASS[0m in 0.16s]
+[0m15:31:33.401126 [debug] [Thread-3 (]: Finished running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb
+[0m15:31:33.404513 [debug] [Thread-3 (]: Began running node test.sales_pipeline.not_null_fct_sales_order_id.4987638769
+[0m15:31:33.406325 [info ] [Thread-3 (]: 13 of 22 START test not_null_fct_sales_order_id ................................ [RUN]
+[0m15:31:33.408264 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.dbt_utils_accepted_range_fct_sales_total_amt__99999999999999__0.46fd05fbcb, now test.sales_pipeline.not_null_fct_sales_order_id.4987638769)
+[0m15:31:33.409821 [debug] [Thread-3 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_order_id.4987638769
+[0m15:31:33.420147 [debug] [Thread-3 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_order_id.4987638769"
+[0m15:31:33.424296 [debug] [Thread-5 (]: Using snowflake connection "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0"
+[0m15:31:33.425838 [debug] [Thread-5 (]: On test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+with meet_condition as(
+  select *
+  from LUCIEN_MIGRATION.analytics.fct_sales
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not unit_price >= 0
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not unit_price <= 99999999999999
+)
+
+select *
+from validation_errors
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0"} */
+[0m15:31:33.427702 [debug] [Thread-3 (]: Began executing node test.sales_pipeline.not_null_fct_sales_order_id.4987638769
+[0m15:31:33.434213 [debug] [Thread-3 (]: Writing runtime sql for node "test.sales_pipeline.not_null_fct_sales_order_id.4987638769"
+[0m15:31:33.473024 [debug] [Thread-4 (]: Using snowflake connection "test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce"
+[0m15:31:33.474447 [debug] [Thread-4 (]: On test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select customer_id
+from LUCIEN_MIGRATION.analytics.fct_sales
+where customer_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce"} */
+[0m15:31:33.535788 [debug] [Thread-3 (]: Using snowflake connection "test.sales_pipeline.not_null_fct_sales_order_id.4987638769"
+[0m15:31:33.540322 [debug] [Thread-3 (]: On test.sales_pipeline.not_null_fct_sales_order_id.4987638769: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from LUCIEN_MIGRATION.analytics.fct_sales
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_fct_sales_order_id.4987638769"} */
+[0m15:31:33.663062 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.235 seconds
+[0m15:31:33.665945 [info ] [Thread-5 (]: 11 of 22 PASS dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0 . [[32mPASS[0m in 0.35s]
+[0m15:31:33.667104 [debug] [Thread-5 (]: Finished running node test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0
+[0m15:31:33.668052 [debug] [Thread-5 (]: Began running node test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84
+[0m15:31:33.668967 [info ] [Thread-5 (]: 14 of 22 START test not_null_fct_sales_product_id .............................. [RUN]
+[0m15:31:33.669980 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.dbt_utils_accepted_range_fct_sales_unit_price__99999999999999__0.4869ac98f0, now test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84)
+[0m15:31:33.670864 [debug] [Thread-5 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84
+[0m15:31:33.678770 [debug] [Thread-5 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84"
+[0m15:31:33.680673 [debug] [Thread-5 (]: Began executing node test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84
+[0m15:31:33.682868 [debug] [Thread-5 (]: Writing runtime sql for node "test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84"
+[0m15:31:33.705700 [debug] [Thread-5 (]: Using snowflake connection "test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84"
+[0m15:31:33.706680 [debug] [Thread-5 (]: On test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select product_id
+from LUCIEN_MIGRATION.analytics.fct_sales
+where product_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84"} */
+[0m15:31:33.725883 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.251 seconds
+[0m15:31:33.727619 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.182 seconds
+[0m15:31:33.730069 [info ] [Thread-4 (]: 12 of 22 PASS not_null_fct_sales_customer_id ................................... [[32mPASS[0m in 0.40s]
+[0m15:31:33.732631 [info ] [Thread-3 (]: 13 of 22 PASS not_null_fct_sales_order_id ...................................... [[32mPASS[0m in 0.32s]
+[0m15:31:33.733677 [debug] [Thread-4 (]: Finished running node test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce
+[0m15:31:33.734654 [debug] [Thread-3 (]: Finished running node test.sales_pipeline.not_null_fct_sales_order_id.4987638769
+[0m15:31:33.735534 [debug] [Thread-4 (]: Began running node test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa
+[0m15:31:33.736372 [debug] [Thread-3 (]: Began running node test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2
+[0m15:31:33.737251 [info ] [Thread-4 (]: 15 of 22 START test not_null_fct_sales_quantity ................................ [RUN]
+[0m15:31:33.738087 [info ] [Thread-3 (]: 16 of 22 START test not_null_fct_sales_total_amt ............................... [RUN]
+[0m15:31:33.739013 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_fct_sales_customer_id.998bfce0ce, now test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa)
+[0m15:31:33.739844 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_fct_sales_order_id.4987638769, now test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2)
+[0m15:31:33.740760 [debug] [Thread-4 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa
+[0m15:31:33.741699 [debug] [Thread-3 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2
+[0m15:31:33.749861 [debug] [Thread-4 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa"
+[0m15:31:33.757538 [debug] [Thread-3 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2"
+[0m15:31:33.759424 [debug] [Thread-4 (]: Began executing node test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa
+[0m15:31:33.761746 [debug] [Thread-4 (]: Writing runtime sql for node "test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa"
+[0m15:31:33.762362 [debug] [Thread-3 (]: Began executing node test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2
+[0m15:31:33.765072 [debug] [Thread-3 (]: Writing runtime sql for node "test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2"
+[0m15:31:33.770917 [debug] [Thread-2 (]: SQL status: SUCCESS 20 in 0.822 seconds
+[0m15:31:33.773835 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3bff6d92b0>]}
+[0m15:31:33.774939 [info ] [Thread-2 (]: 6 of 22 OK created sql table model analytics.dim_products ...................... [[32mSUCCESS 20[0m in 0.89s]
+[0m15:31:33.775837 [debug] [Thread-2 (]: Finished running node model.sales_pipeline.dim_products
+[0m15:31:33.776633 [debug] [Thread-2 (]: Began running node test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216
+[0m15:31:33.777558 [info ] [Thread-2 (]: 17 of 22 START test not_null_fct_sales_unit_price .............................. [RUN]
+[0m15:31:33.778501 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.sales_pipeline.dim_products, now test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216)
+[0m15:31:33.779254 [debug] [Thread-2 (]: Began compiling node test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216
+[0m15:31:33.788508 [debug] [Thread-2 (]: Writing injected SQL for node "test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216"
+[0m15:31:33.790293 [debug] [Thread-4 (]: Using snowflake connection "test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa"
+[0m15:31:33.791371 [debug] [Thread-4 (]: On test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select quantity
+from LUCIEN_MIGRATION.analytics.fct_sales
+where quantity is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa"} */
+[0m15:31:33.793493 [debug] [Thread-2 (]: Began executing node test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216
+[0m15:31:33.795903 [debug] [Thread-2 (]: Writing runtime sql for node "test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216"
+[0m15:31:33.807660 [debug] [Thread-3 (]: Using snowflake connection "test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2"
+[0m15:31:33.811521 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.104 seconds
+[0m15:31:33.812149 [debug] [Thread-3 (]: On test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select total_amt
+from LUCIEN_MIGRATION.analytics.fct_sales
+where total_amt is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2"} */
+[0m15:31:33.815168 [info ] [Thread-5 (]: 14 of 22 PASS not_null_fct_sales_product_id .................................... [[32mPASS[0m in 0.15s]
+[0m15:31:33.817775 [debug] [Thread-5 (]: Finished running node test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84
+[0m15:31:33.819142 [debug] [Thread-5 (]: Began running node test.sales_pipeline.assert_negative_revenue
+[0m15:31:33.820233 [info ] [Thread-5 (]: 18 of 22 START test assert_negative_revenue .................................... [RUN]
+[0m15:31:33.821370 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_fct_sales_product_id.05d2f5cb84, now test.sales_pipeline.assert_negative_revenue)
+[0m15:31:33.822270 [debug] [Thread-5 (]: Began compiling node test.sales_pipeline.assert_negative_revenue
+[0m15:31:33.825391 [debug] [Thread-5 (]: Writing injected SQL for node "test.sales_pipeline.assert_negative_revenue"
+[0m15:31:33.828052 [debug] [Thread-5 (]: Began executing node test.sales_pipeline.assert_negative_revenue
+[0m15:31:33.831604 [debug] [Thread-5 (]: Writing runtime sql for node "test.sales_pipeline.assert_negative_revenue"
+[0m15:31:33.833881 [debug] [Thread-2 (]: Using snowflake connection "test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216"
+[0m15:31:33.835655 [debug] [Thread-2 (]: On test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select unit_price
+from LUCIEN_MIGRATION.analytics.fct_sales
+where unit_price is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216"} */
+[0m15:31:33.872730 [debug] [Thread-5 (]: Using snowflake connection "test.sales_pipeline.assert_negative_revenue"
+[0m15:31:33.874053 [debug] [Thread-5 (]: On test.sales_pipeline.assert_negative_revenue: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  SELECT sales.order_id, 
+        sales.revenue
+FROM LUCIEN_MIGRATION.analytics.fct_revenue as sales
+WHERE sales.revenue < 0
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.assert_negative_revenue"} */
+[0m15:31:33.890752 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.099 seconds
+[0m15:31:33.894314 [info ] [Thread-4 (]: 15 of 22 PASS not_null_fct_sales_quantity ...................................... [[32mPASS[0m in 0.16s]
+[0m15:31:33.896666 [debug] [Thread-4 (]: Finished running node test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa
+[0m15:31:33.897783 [debug] [Thread-4 (]: Began running node test.sales_pipeline.not_null_dim_products_price.93519fc0ed
+[0m15:31:33.899372 [info ] [Thread-4 (]: 19 of 22 START test not_null_dim_products_price ................................ [RUN]
+[0m15:31:33.900511 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_fct_sales_quantity.a4800a70aa, now test.sales_pipeline.not_null_dim_products_price.93519fc0ed)
+[0m15:31:33.901430 [debug] [Thread-4 (]: Began compiling node test.sales_pipeline.not_null_dim_products_price.93519fc0ed
+[0m15:31:33.909514 [debug] [Thread-4 (]: Writing injected SQL for node "test.sales_pipeline.not_null_dim_products_price.93519fc0ed"
+[0m15:31:33.911962 [debug] [Thread-4 (]: Began executing node test.sales_pipeline.not_null_dim_products_price.93519fc0ed
+[0m15:31:33.914609 [debug] [Thread-4 (]: Writing runtime sql for node "test.sales_pipeline.not_null_dim_products_price.93519fc0ed"
+[0m15:31:33.916269 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.100 seconds
+[0m15:31:33.919123 [info ] [Thread-3 (]: 16 of 22 PASS not_null_fct_sales_total_amt ..................................... [[32mPASS[0m in 0.18s]
+[0m15:31:33.920474 [debug] [Thread-3 (]: Finished running node test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2
+[0m15:31:33.922174 [debug] [Thread-3 (]: Began running node test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1
+[0m15:31:33.923597 [info ] [Thread-3 (]: 20 of 22 START test not_null_dim_products_product_id ........................... [RUN]
+[0m15:31:33.924784 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_fct_sales_total_amt.8a364860c2, now test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1)
+[0m15:31:33.925777 [debug] [Thread-3 (]: Began compiling node test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1
+[0m15:31:33.933971 [debug] [Thread-3 (]: Writing injected SQL for node "test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1"
+[0m15:31:33.936284 [debug] [Thread-3 (]: Began executing node test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1
+[0m15:31:33.938834 [debug] [Thread-3 (]: Writing runtime sql for node "test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1"
+[0m15:31:33.940610 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.104 seconds
+[0m15:31:33.945964 [info ] [Thread-2 (]: 17 of 22 PASS not_null_fct_sales_unit_price .................................... [[32mPASS[0m in 0.17s]
+[0m15:31:33.947202 [debug] [Thread-2 (]: Finished running node test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216
+[0m15:31:33.948373 [debug] [Thread-2 (]: Began running node test.sales_pipeline.not_null_dim_products_product_name.991aec73f3
+[0m15:31:33.949425 [info ] [Thread-2 (]: 21 of 22 START test not_null_dim_products_product_name ......................... [RUN]
+[0m15:31:33.950401 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_fct_sales_unit_price.9b1b644216, now test.sales_pipeline.not_null_dim_products_product_name.991aec73f3)
+[0m15:31:33.951299 [debug] [Thread-2 (]: Began compiling node test.sales_pipeline.not_null_dim_products_product_name.991aec73f3
+[0m15:31:33.959833 [debug] [Thread-2 (]: Writing injected SQL for node "test.sales_pipeline.not_null_dim_products_product_name.991aec73f3"
+[0m15:31:33.964458 [debug] [Thread-4 (]: Using snowflake connection "test.sales_pipeline.not_null_dim_products_price.93519fc0ed"
+[0m15:31:33.965579 [debug] [Thread-2 (]: Began executing node test.sales_pipeline.not_null_dim_products_product_name.991aec73f3
+[0m15:31:33.966438 [debug] [Thread-4 (]: On test.sales_pipeline.not_null_dim_products_price.93519fc0ed: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select price
+from LUCIEN_MIGRATION.analytics.dim_products
+where price is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_dim_products_price.93519fc0ed"} */
+[0m15:31:33.969024 [debug] [Thread-2 (]: Writing runtime sql for node "test.sales_pipeline.not_null_dim_products_product_name.991aec73f3"
+[0m15:31:33.988623 [debug] [Thread-3 (]: Using snowflake connection "test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1"
+[0m15:31:33.990036 [debug] [Thread-3 (]: On test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select product_id
+from LUCIEN_MIGRATION.analytics.dim_products
+where product_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1"} */
+[0m15:31:34.011751 [debug] [Thread-2 (]: Using snowflake connection "test.sales_pipeline.not_null_dim_products_product_name.991aec73f3"
+[0m15:31:34.012971 [debug] [Thread-2 (]: On test.sales_pipeline.not_null_dim_products_product_name.991aec73f3: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select product_name
+from LUCIEN_MIGRATION.analytics.dim_products
+where product_name is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "test.sales_pipeline.not_null_dim_products_product_name.991aec73f3"} */
+[0m15:31:34.165734 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.196 seconds
+[0m15:31:34.168814 [info ] [Thread-4 (]: 19 of 22 PASS not_null_dim_products_price ...................................... [[32mPASS[0m in 0.27s]
+[0m15:31:34.170514 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.156 seconds
+[0m15:31:34.171314 [debug] [Thread-4 (]: Finished running node test.sales_pipeline.not_null_dim_products_price.93519fc0ed
+[0m15:31:34.174069 [info ] [Thread-2 (]: 21 of 22 PASS not_null_dim_products_product_name ............................... [[32mPASS[0m in 0.22s]
+[0m15:31:34.175936 [debug] [Thread-2 (]: Finished running node test.sales_pipeline.not_null_dim_products_product_name.991aec73f3
+[0m15:31:34.213436 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.222 seconds
+[0m15:31:34.216519 [info ] [Thread-3 (]: 20 of 22 PASS not_null_dim_products_product_id ................................. [[32mPASS[0m in 0.29s]
+[0m15:31:34.218580 [debug] [Thread-3 (]: Finished running node test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1
+[0m15:31:34.280543 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.406 seconds
+[0m15:31:34.283595 [info ] [Thread-5 (]: 18 of 22 PASS assert_negative_revenue .......................................... [[32mPASS[0m in 0.46s]
+[0m15:31:34.284788 [debug] [Thread-5 (]: Finished running node test.sales_pipeline.assert_negative_revenue
+[0m15:31:34.286212 [debug] [Thread-4 (]: Began running node model.sales_pipeline.vw_mom_revenue
+[0m15:31:34.287371 [info ] [Thread-4 (]: 22 of 22 START sql view model analytics.vw_mom_revenue ......................... [RUN]
+[0m15:31:34.288459 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.sales_pipeline.not_null_dim_products_price.93519fc0ed, now model.sales_pipeline.vw_mom_revenue)
+[0m15:31:34.289393 [debug] [Thread-4 (]: Began compiling node model.sales_pipeline.vw_mom_revenue
+[0m15:31:34.292748 [debug] [Thread-4 (]: Writing injected SQL for node "model.sales_pipeline.vw_mom_revenue"
+[0m15:31:34.294920 [debug] [Thread-4 (]: Began executing node model.sales_pipeline.vw_mom_revenue
+[0m15:31:34.298555 [debug] [Thread-4 (]: Writing runtime sql for node "model.sales_pipeline.vw_mom_revenue"
+[0m15:31:34.328431 [debug] [Thread-4 (]: Using snowflake connection "model.sales_pipeline.vw_mom_revenue"
+[0m15:31:34.329549 [debug] [Thread-4 (]: On model.sales_pipeline.vw_mom_revenue: create or replace   view LUCIEN_MIGRATION.analytics.vw_mom_revenue
+  
+  
+  
+  
+  as (
+    
+
+-- models/marts/vw_mom_revenue.sql
+WITH revenue_data AS (
+    SELECT * FROM LUCIEN_MIGRATION.analytics.fct_revenue
+)
+
+SELECT 
+    DATE_TRUNC('month', date::date) AS order_month,
+    SUM(revenue) AS total_revenue
+FROM revenue_data
+GROUP BY 1
+ORDER BY 1
+  )
+/* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "sales_pipeline", "target_name": "databricks", "node_id": "model.sales_pipeline.vw_mom_revenue"} */;
+[0m15:31:34.716940 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.386 seconds
+[0m15:31:34.720207 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6150d7d9-dcea-4284-a855-0387794e289a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3be7526d50>]}
+[0m15:31:34.721475 [info ] [Thread-4 (]: 22 of 22 OK created sql view model analytics.vw_mom_revenue .................... [[32mSUCCESS 1[0m in 0.43s]
+[0m15:31:34.722637 [debug] [Thread-4 (]: Finished running node model.sales_pipeline.vw_mom_revenue
+[0m15:31:34.724841 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m15:31:34.725688 [debug] [MainThread]: Connection 'test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1' was left open.
+[0m15:31:34.726376 [debug] [MainThread]: On test.sales_pipeline.not_null_dim_products_product_id.c8aba288d1: Close
+[0m15:31:34.811623 [debug] [MainThread]: Connection 'model.sales_pipeline.vw_mom_revenue' was left open.
+[0m15:31:34.812636 [debug] [MainThread]: On model.sales_pipeline.vw_mom_revenue: Close
+[0m15:31:34.901177 [debug] [MainThread]: Connection 'test.sales_pipeline.not_null_dim_products_product_name.991aec73f3' was left open.
+[0m15:31:34.903433 [debug] [MainThread]: On test.sales_pipeline.not_null_dim_products_product_name.991aec73f3: Close
+[0m15:31:34.988673 [debug] [MainThread]: Connection 'test.sales_pipeline.assert_negative_revenue' was left open.
+[0m15:31:34.989713 [debug] [MainThread]: On test.sales_pipeline.assert_negative_revenue: Close
+[0m15:31:35.079131 [info ] [MainThread]: 
+[0m15:31:35.080214 [info ] [MainThread]: Finished running 4 table models, 15 data tests, 3 view models in 0 hours 0 minutes and 5.74 seconds (5.74s).
+[0m15:31:35.083669 [debug] [MainThread]: Command end result
+[0m15:31:35.160555 [debug] [MainThread]: Wrote artifact WritableManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/manifest.json
+[0m15:31:35.165282 [debug] [MainThread]: Wrote artifact SemanticManifest to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/semantic_manifest.json
+[0m15:31:35.170881 [debug] [MainThread]: Wrote artifact OsiDocument to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/osi_document.json
+[0m15:31:35.181280 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Workspace/Users/lucien_racine@outlook.com/The-Lake-House/sales_pipeline/target/run_results.json
+[0m15:31:35.182814 [info ] [MainThread]: 
+[0m15:31:35.183872 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m15:31:35.185988 [info ] [MainThread]: 
+[0m15:31:35.187068 [info ] [MainThread]: Done. PASS=22 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=22
+[0m15:31:35.189004 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 8.030564, "process_in_blocks": "88", "process_kernel_time": 0.5224, "process_mem_max_rss": "263788", "process_out_blocks": "8", "process_user_time": 5.558928}
+[0m15:31:35.190505 [debug] [MainThread]: Command `dbt build` succeeded at 15:31:35.190313 after 8.03 seconds
+[0m15:31:35.191436 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3c1bf288f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3bffd51d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xff3c1deae540>]}
+[0m15:31:35.192326 [debug] [MainThread]: Flushing usage events
+[0m15:31:35.197619 [debug] [MainThread]: An error was encountered while trying to flush usage events
