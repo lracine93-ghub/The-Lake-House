@@ -119,7 +119,7 @@ def load_products_dim_tbl(table_name):
                     FILE_FORMAT = (TYPE = 'PARQUET')
                     PATTERN = '.*\\.parquet'
                     MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE
-                    ON_ERROR = 'SKIP_FILE';     """   
+                    ON_ERROR = 'SKIP_FILE';"""   
     try:
         conn.cursor().execute(copy_query)
         print(f"Successfully loaded data into {table_name} table in Snowflake.")
