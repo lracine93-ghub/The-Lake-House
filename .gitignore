@@ -32,3 +32,8 @@ logs/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Temporary archives and editor-generated files
+*.tgz
+*.session.sql
+Screenshots/
