@@ -1,6 +1,5 @@
 # AWS CLI installers and local distributions
 sales_pipeline/aws/
-aws/
 awscliv2.zip
 AWSCLIV2.msi
 
@@ -26,7 +25,6 @@ logs/
 *.log
 
 # Local data and tools
-sales_pipeline/aws/
 *.duckdb
 *.parquet
 
