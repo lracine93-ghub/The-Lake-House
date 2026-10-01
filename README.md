@@ -44,10 +44,10 @@ flowchart LR
 
 | Task | Notebook | Purpose |
 |---|---|---|
-| `bronze_ingestion` | `01-bronze-ingestion.ipynb` | Load source files into Bronze Delta tables |
-| `silver_transformation` | `02-silver-transformation.ipynb` | Clean, standardize, validate, and deduplicate data |
-| `publish_to_snowflake` | `03-publish-to-snowflake.ipynb` | Write distributed Parquet files to S3 and promote validated Snowflake tables |
-| `dbt_build` | `04-dbt-build.ipynb` | Build and test Snowflake staging and analytics models |
+| `bronze-ingestion` | `01-bronze-ingestion.ipynb` | Load source files into Bronze Delta tables |
+| `silver-transformation` | `02-silver-transformation.ipynb` | Clean, standardize, validate, and deduplicate data |
+| `publish-to-snowflake` | `03-publish-to-snowflake.ipynb` | Write distributed Parquet files to S3 and promote validated Snowflake tables |
+| `dbt-build` | `04-dbt-build.ipynb` | Build and test Snowflake staging and analytics models |
 
 ## Technology stack
 
