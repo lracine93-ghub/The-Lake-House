@@ -25,7 +25,6 @@ logs/
 *.log
 
 # Local data and tools
-sales_pipeline/aws/
 *.duckdb
 *.parquet
 
