@@ -38,8 +38,8 @@ The Databricks job runs four dependent notebook tasks:
 ```mermaid
 flowchart LR
     A["bronze_ingestion"] --> B["silver_transformation"]
-    B --> C["publish_to_snowflake"]
-    C --> D["dbt_build"]
+    B --> C["publish-to-snowflake"]
+    C --> D["dbt-build"]
 ```
 
 | Task | Notebook | Purpose |
