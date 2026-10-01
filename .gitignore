@@ -1,0 +1,36 @@
+# AWS CLI installers and local distributions
+sales_pipeline/aws/
+aws/
+awscliv2.zip
+AWSCLIV2.msi
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.p8
+profiles.yml
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# dbt
+target/
+dbt_packages/
+logs/
+*.log
+
+# Local data and tools
+sales_pipeline/aws/
+*.duckdb
+*.parquet
+
+# Editors and operating systems
+.vscode/
+.DS_Store
+Thumbs.db

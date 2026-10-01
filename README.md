@@ -49,6 +49,8 @@ flowchart LR
 | `publish-to-snowflake` | `03-publish-to-snowflake.ipynb` | Write distributed Parquet files to S3 and promote validated Snowflake tables |
 | `dbt-build` | `04-dbt-build.ipynb` | Build and test Snowflake staging and analytics models |
 
+
+
 ## Technology stack
 
 - **Processing and orchestration:** Databricks, PySpark, Delta Lake, Databricks Jobs
@@ -119,6 +121,13 @@ The-Lake-House/
 │       ├── 03-publish-to-snowflake.ipynb
 │       ├── 04-dbt-build.ipynb
 │       └── dbt_requirements.txt
+├── docs/
+│   ├── images/
+│   │   ├── databricks-job-success.png
+│   │   └── snowflake-pipeline-audit.png
+│   │   ├── snowflake-row-counts.png
+│   │   └── dbt-build-success.png
+│   │   └── FLowChart.jpg
 ├── sales_pipeline/
 │   ├── data/raw/
 │   ├── models/
@@ -228,6 +237,24 @@ Do not commit `.env`, `profiles.yml`, private keys, or passphrases.
 - **Snowflake and dbt own Gold:** Existing warehouse models and Lightdash semantics remain authoritative.
 - **Batch COPY is used for this workload:** Snowflake bulk loading is appropriate for run-partitioned files; streaming ingestion can be added when continuous arrival is required.
 - **Validation precedes promotion:** Reconciliation and atomic swaps keep incomplete loads away from downstream consumers.
+
+## Pipeline Execution Evidence
+
+### Databricks Workflow
+
+![Successful Databricks workflow](docs/images/databricks-job-success.png)
+
+### dbt Build and Automated Tests
+
+![Successful dbt build](docs/images/dbt-build-success.png)
+
+### Snowflake Pipeline Audit
+
+![Snowflake pipeline audit](docs/images/snowflake-pipeline-audit.png)
+
+### Snowflake Raw-Table Reconciliation
+
+![Snowflake raw-table counts](docs/images/snowflake-row-counts.png)
 
 ## Portfolio scope
 
