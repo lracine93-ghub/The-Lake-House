@@ -127,7 +127,7 @@ The-Lake-House/
 │   │   └── snowflake-pipeline-audit.png
 │   │   ├── snowflake-row-counts.png
 │   │   └── dbt-build-success.png
-│   │   └── FLowChart.jpg
+│   │   └── FlowChart.jpg
 ├── sales_pipeline/
 │   ├── data/raw/
 │   ├── models/
