@@ -1,14 +1,18 @@
 # AWS CLI installers and local distributions
 sales_pipeline/aws/
-awscliv2.zip
-AWSCLIV2.msi
+**/awscli-bundle/
+**/awscli-bundle.zip
+**/awscliv2.zip
+**/AWSCLIV2.msi
+**/snowsql-*.bash
 
-# Secrets
+# Secrets and generated key material
 .env
 .env.*
 !.env.example
 *.pem
 *.p8
+snowflake_public_key*.pub
 profiles.yml
 
 # Python
@@ -17,6 +21,7 @@ venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.ruff_cache/
 
 # dbt
 target/
@@ -24,12 +29,16 @@ dbt_packages/
 logs/
 *.log
 
+# Databricks local state
+.databricks/
+
 # Local data and tools
 *.duckdb
 *.parquet
 
 # Editors and operating systems
 .vscode/
+.idea/
 .DS_Store
 Thumbs.db
 
