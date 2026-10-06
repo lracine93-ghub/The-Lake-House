@@ -15,6 +15,13 @@
     )
 }}
 
-SELECT * FROM {{ ref('stg_products') }}
+SELECT
+    product_id,
+    product_name,
+    product_description,
+    price,
+    category,
+    last_updated
+FROM {{ ref('stg_products') }}
 
 {% endsnapshot %}
