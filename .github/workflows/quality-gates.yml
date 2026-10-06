@@ -31,6 +31,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements-dev.txt
+          
+      - name: Prepare dbt CI profile
+        run: |
+          mkdir -p "$HOME/.dbt"
+          cp .github/dbt-ci-profiles.yml "$HOME/.dbt/profiles.yml"
+          chmod 600 "$HOME/.dbt/profiles.yml"
 
       - name: Validate Databricks notebook JSON
         run: |
