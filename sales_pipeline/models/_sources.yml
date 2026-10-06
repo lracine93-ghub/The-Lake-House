@@ -1,0 +1,52 @@
+version: 2
+
+sources:
+  - name: external_source
+    description: >-
+      Snowflake raw-layer tables populated by the Databricks
+      incremental publishing workflow.
+    database: LUCIEN_MIGRATION
+    schema: RAW
+
+    config:
+      loaded_at_field: updated_at
+      freshness:
+        warn_after:
+          count: 30
+          period: day
+        error_after:
+          count: 90
+          period: day
+
+    tables:
+      - name: raw_sales
+        description: Raw transactional sales records.
+        columns:
+          - name: sales_id
+            description: Source sales identifier.
+            data_tests:
+              - not_null
+
+          - name: product_id
+            description: Product associated with the sale.
+            data_tests:
+              - not_null
+
+          - name: updated_at
+            description: Timestamp when the record entered the lakehouse.
+            data_tests:
+              - not_null
+
+      - name: raw_products
+        description: Raw product master records.
+        columns:
+          - name: id
+            description: Source product identifier.
+            data_tests:
+              - not_null
+              - unique
+
+          - name: updated_at
+            description: Timestamp when the record entered the lakehouse.
+            data_tests:
+              - not_null

@@ -6,6 +6,7 @@ models:
     columns:
     - name: order_id
       description: "Unique identifier for each sales record"
-      tests:
+      data_tests:
         - not_null 
+        - unique
   

@@ -5,7 +5,8 @@ models:
     description: "The raw product dimension data from source"
     columns:
       - name: product_id # Adjust to match the column name in your raw_products.csv
-        tests:
+        data_tests:
           - not_null
+          - unique
 
 
