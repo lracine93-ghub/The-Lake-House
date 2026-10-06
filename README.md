@@ -1,97 +1,142 @@
 # The Lake House
 
-An end-to-end data engineering portfolio project that uses Databricks and PySpark to ingest and validate source data, Amazon S3 as the cross-platform handoff layer, Snowflake as the analytical warehouse, and dbt Core to build tested business-ready models.
+[![Quality Gates](https://github.com/lracine93-ghub/The-Lake-House/actions/workflows/quality-gates.yml/badge.svg)](https://github.com/lracine93-ghub/The-Lake-House/actions/workflows/quality-gates.yml)
 
-The project demonstrates production-style patterns—including Medallion processing, distributed Parquet writes, run-specific storage paths, source-to-target reconciliation, atomic table promotion, RSA key-pair authentication, and automated dbt testing—using reproducible sample sales data.
+A production-style data engineering pipeline that incrementally processes sales and product data through Databricks, Delta Lake, Amazon S3, Snowflake, and dbt Core.
+
+The project demonstrates idempotent ingestion, Medallion Architecture, Delta `MERGE` processing, data quarantine, cross-platform bulk loading, Snowflake key-pair authentication, source freshness enforcement, SCD Type 2 history, automated testing, deployment as code, and CI/CD quality gates.
 
 ## Architecture
 
 ```mermaid
 flowchart TD
-    A["Sales and product CSV sources"] --> B["Databricks Bronze<br/>Delta tables"]
-    B --> C["Databricks Silver<br/>validated Delta tables"]
-    C --> D["Amazon S3<br/>run-partitioned Parquet"]
-    D --> E["Snowflake RAW<br/>NEXT tables"]
-    E --> F["Reconciliation and<br/>atomic SWAP"]
-    F --> G["dbt STAGING and<br/>ANALYTICS models"]
-    G --> H["Lightdash<br/>semantic analytics"]
+    A["CSV source data"] --> B["Databricks Bronze<br/>Delta MERGE"]
+    B --> C["Databricks Silver<br/>Validation and quarantine"]
+    C --> D["Amazon S3<br/>Run-partitioned Parquet"]
+    D --> E["Snowflake staging tables"]
+    E --> F["Incremental MERGE<br/>into RAW tables"]
+    F --> G["dbt staging and marts"]
+    G --> H["Snowflake analytics layer"]
+    G --> I["SCD Type 2 snapshots"]
+    H --> J["Lightdash analytics"]
 ```
 
-### Layer ownership
+## What This Project Demonstrates
+
+- Incremental, idempotent Bronze and Silver pipelines
+- Explicit PySpark schemas and deterministic record hashing
+- Delta Lake `MERGE` operations instead of destructive overwrites
+- Quarantine tables and fail-fast data-quality controls
+- A shared pipeline run ID across all orchestration tasks
+- Distributed Parquet handoff from Databricks to Amazon S3
+- Incremental Snowflake publishing with audit history
+- Safe `NO_CHANGES` handling for repeat pipeline runs
+- dbt source freshness, transformations, tests, and snapshots
+- RSA key-pair authentication using Databricks Secrets
+- Databricks Asset Bundle deployment
+- GitHub Actions validation on pushes and pull requests
+
+## Layer Ownership
 
 | Layer | Platform | Responsibility |
 |---|---|---|
 | Source | Repository CSV files | Reproducible sales and product inputs |
-| Bronze | Databricks Delta Lake | Raw ingestion with source and load metadata |
-| Silver | Databricks Delta Lake | Type casting, validation, deduplication, and standardization |
-| Handoff | Amazon S3 | Distributed Snappy Parquet files organized by pipeline run |
-| Raw warehouse | Snowflake | Bulk-loaded source-aligned tables |
-| Gold | Snowflake + dbt Core | Tested staging models, dimensions, facts, and analytics views |
-| BI | Lightdash | Downstream semantic and self-service analytics |
+| Bronze | Databricks Delta Lake | Append-only ingestion, lineage metadata, and record hashes |
+| Silver | Databricks Delta Lake | Validation, deduplication, SCD1-style merges, and quarantine |
+| Handoff | Amazon S3 | Run-partitioned Snappy Parquet files |
+| Raw warehouse | Snowflake | Incrementally maintained source-aligned tables |
+| Gold | Snowflake and dbt Core | Staging models, dimensions, facts, analytics views, and snapshots |
+| BI | Lightdash | Semantic and self-service analytics |
 
-Snowflake and dbt are the authoritative Gold layer. The repository's `03-gold-analytics` notebook is retained as a Databricks learning artifact and is not part of the production-style job.
+Snowflake and dbt are the authoritative Gold layer. The `03-gold-analytics.ipynb` notebook remains in the repository as a Databricks learning artifact and is not part of the deployed workflow.
 
-## Orchestrated workflow
+## Orchestrated Workflow
 
-The Databricks job runs four dependent notebook tasks:
+The Databricks workflow contains four dependent tasks:
 
 ```mermaid
 flowchart LR
     A["bronze_ingestion"] --> B["silver_transformation"]
-    B --> C["publish-to-snowflake"]
-    C --> D["dbt-build"]
+    B --> C["publish_to_snowflake"]
+    C --> D["dbt_build"]
 ```
 
-| Task | Notebook | Purpose |
+| Task | Notebook | Responsibility |
 |---|---|---|
-| `bronze_ingestion` | `01-bronze-ingestion.ipynb` | Load source files into Bronze Delta tables |
-| `silver_transformation` | `02-silver-transformation.ipynb` | Clean, standardize, validate, and deduplicate data |
-| `publish-to-snowflake` | `03-publish-to-snowflake.ipynb` | Write distributed Parquet files to S3 and promote validated Snowflake tables |
-| `dbt-build` | `04-dbt-build.ipynb` | Build and test Snowflake staging and analytics models |
+| `bronze_ingestion` | `01-bronze-ingestion.ipynb` | Read source files with explicit schemas and insert unseen records into Bronze Delta tables |
+| `silver_transformation` | `02-silver-transformation.ipynb` | Standardize, deduplicate, quarantine invalid rows, and merge valid records into Silver |
+| `publish_to_snowflake` | `03-publish-to-snowflake.ipynb` | Export changed Silver records to S3 and incrementally publish them to Snowflake |
+| `dbt_build` | `04-dbt-build.ipynb` | Check source freshness, build and test analytical models, and maintain product snapshots |
 
+The workflow enforces:
 
+- Maximum concurrency of one run
+- Queuing for overlapping requests
+- Task-specific timeouts
+- Automatic retries
+- Failure notifications
+- A shared `pipeline_run_id`
+- Serverless Databricks compute
 
-## Technology stack
+## Incremental Processing
 
-- **Processing and orchestration:** Databricks, PySpark, Delta Lake, Databricks Jobs
-- **Storage:** Amazon S3, Snappy Parquet
-- **Warehouse:** Snowflake
-- **Transformation and testing:** dbt Core, dbt-snowflake, dbt-utils
-- **Analytics:** Lightdash
-- **Languages:** Python, SQL, T-SQL, Bash
-- **Engineering workflow:** Git, GitHub, pull requests
-- **Security:** Databricks Secrets, encrypted RSA private key, Snowflake key-pair authentication
+### Bronze
 
-## Engineering features
+Bronze ingestion:
 
-### Distributed data handoff
+1. Reads CSV files using explicit Spark schemas.
+2. Adds source, file, run ID, ingestion timestamp, and record-hash metadata.
+3. Removes duplicate source records.
+4. Uses insert-only Delta `MERGE` operations keyed by `record_hash`.
+5. Validates table schemas and operation metrics after loading.
 
-Silver DataFrames are written directly from Spark to run-specific S3 paths:
+Previously ingested records are not rewritten.
+
+### Silver
+
+Silver transformation:
+
+1. Reads the Bronze Delta tables.
+2. Applies deterministic deduplication.
+3. Standardizes column names and data types.
+4. Separates valid and invalid records.
+5. Writes rejected rows to quarantine tables.
+6. Uses SCD1-style Delta `MERGE` operations for valid records.
+7. Fails the pipeline if quality thresholds are violated.
+
+### Snowflake Publishing
+
+Only records produced by the current pipeline run are selected for incremental publishing.
+
+Changed Silver data is written to paths such as:
 
 ```text
-s3://<your-bucket>/raw/databricks/raw_sales/run_id=<timestamp>/
-s3://<your-bucket>/raw/databricks/raw_products/run_id=<timestamp>/
+s3://<bucket>/raw/databricks/silver_sales/run_id=<pipeline_run_id>/
+s3://<bucket>/raw/databricks/silver_products/run_id=<pipeline_run_id>/
 ```
 
-Snowflake loads only `.parquet` objects, excluding Spark marker files such as `_SUCCESS`.
+The publishing task then:
 
-### Safe Snowflake promotion
+1. Creates or validates Snowflake target and audit tables.
+2. Loads Parquet files into staging tables with `COPY INTO`.
+3. Merges staged records into production RAW tables.
+4. Reconciles source and target row counts.
+5. Records run status, row counts, revenue, and S3 paths.
+6. Records `NO_CHANGES` without writing empty Parquet files or modifying production tables.
 
-Each pipeline run:
+The process can also run in an explicit full-publish mode when a controlled backfill is required.
 
-1. Creates transient `RAW_SALES_NEXT` and `RAW_PRODUCTS_NEXT` tables.
-2. Loads the current run's Parquet files with Snowflake `COPY INTO`.
-3. Aborts on file or parsing errors.
-4. Reconciles Spark and Snowflake row counts.
-5. Checks primary-key uniqueness and aggregate revenue.
-6. Promotes validated data with atomic `ALTER TABLE ... SWAP WITH`.
-7. Records the completed run in `PIPELINE_RUN_AUDIT`.
+## dbt Analytics Engineering
 
-The live raw tables remain unchanged when validation fails.
+The dbt task performs:
 
-### Automated data quality
-
-The dbt task resolves dependencies, validates the Snowflake connection, compiles the project, builds upstream staging and downstream mart models, and runs associated tests.
+1. `dbt deps`
+2. `dbt debug`
+3. Model discovery and compilation
+4. Source freshness validation
+5. Staging and mart model builds
+6. Automated data tests
+7. SCD Type 2 product snapshot execution
 
 Validated project result:
 
@@ -99,20 +144,111 @@ Validated project result:
 10,000 sales records
 20 product records
 7 dbt models
-15 data tests
-PASS=22 WARN=0 ERROR=0 SKIP=0
+24 data tests
+2 configured sources
+1 SCD Type 2 snapshot
+PASS=31 WARN=0 ERROR=0 SKIP=0
 ```
 
-Tests cover required identifiers and measures, accepted numeric ranges, and negative-revenue prevention.
+Tests cover:
 
-### Secure authentication
+- Required identifiers
+- Primary-key uniqueness
+- Source-layer null validation
+- Numeric accepted ranges
+- Negative-revenue prevention
+- Product dimension integrity
 
-The pipeline does not commit Snowflake credentials or private-key files. Databricks Secrets supplies configuration and an encrypted Base64-encoded RSA private key at runtime. The dbt notebook writes the decoded encrypted key and `profiles.yml` only to a permission-restricted temporary directory, then removes both after execution.
+Source freshness warns after 30 days and fails after 90 days based on the Snowflake RAW `updated_at` fields.
 
-## Repository structure
+Product attribute changes are maintained in:
+
+```text
+LUCIEN_MIGRATION.SNAPSHOTS.SCD_PRODUCTS
+```
+
+## Security
+
+The repository does not store operational credentials, private keys, passphrases, or generated dbt profiles.
+
+Runtime security includes:
+
+- Encrypted RSA private-key authentication to Snowflake
+- Base64-encoded key storage in Databricks Secrets
+- Temporary permission-restricted key and profile files
+- No password authentication in pipeline code
+- `.gitignore` protection for keys, profiles, environment files, artifacts, and local tooling
+- Rewritten Git history with obsolete binaries and sensitive artifacts removed
+
+## Deployment as Code
+
+The Databricks job is defined through a Databricks Asset Bundle:
+
+```text
+databricks.yml
+resources/lakehouse.job.yml
+```
+
+Validate the bundle:
+
+```bash
+databricks bundle validate \
+  --target dev \
+  --profile lakehouse-workspace
+```
+
+Deploy it:
+
+```bash
+databricks bundle deploy \
+  --target dev \
+  --profile lakehouse-workspace
+```
+
+Run the complete workflow:
+
+```bash
+databricks bundle run lakehouse_medallion_pipeline \
+  --target dev \
+  --profile lakehouse-workspace
+```
+
+## CI/CD Quality Gates
+
+GitHub Actions validates every pull request and relevant branch push.
+
+The workflow checks:
+
+- Databricks notebook JSON integrity
+- Python syntax
+- Databricks bundle YAML syntax
+- Pinned dbt dependency installation
+- dbt project parsing
+- Deprecated dbt configuration usage
+
+The CI process uses placeholder environment values and does not connect to Snowflake or expose runtime credentials.
+
+## Technology Stack
+
+- **Processing:** Databricks, PySpark, Delta Lake
+- **Orchestration:** Databricks Jobs and Asset Bundles
+- **Storage:** Amazon S3 and Snappy Parquet
+- **Warehouse:** Snowflake
+- **Transformation:** dbt Core and dbt-snowflake
+- **Testing:** dbt-utils, custom SQL tests, and GitHub Actions
+- **Analytics:** Lightdash
+- **Languages:** Python, SQL, T-SQL, Bash, YAML
+- **Security:** Databricks Secrets and Snowflake RSA key-pair authentication
+- **DevOps:** Git, GitHub, pull requests, and CI/CD
+
+## Repository Structure
 
 ```text
 The-Lake-House/
+├── .github/
+│   ├── dbt-ci-profiles.yml
+│   └── workflows/
+│       └── quality-gates.yml
 ├── databricks/
 │   └── notebooks/
 │       ├── 01-bronze-ingestion.ipynb
@@ -122,12 +258,9 @@ The-Lake-House/
 │       ├── 04-dbt-build.ipynb
 │       └── dbt_requirements.txt
 ├── docs/
-│   ├── images/
-│   │   ├── databricks-job-success.png
-│   │   └── snowflake-pipeline-audit.png
-│   │   ├── snowflake-row-counts.png
-│   │   └── dbt-build-success.png
-│   │   └── FlowChart.jpg
+│   └── images/
+├── resources/
+│   └── lakehouse.job.yml
 ├── sales_pipeline/
 │   ├── data/raw/
 │   ├── models/
@@ -137,23 +270,23 @@ The-Lake-House/
 │   ├── tests/
 │   ├── dbt_project.yml
 │   └── packages.yml
+├── databricks.yml
 ├── requirements-dev.txt
 └── README.md
 ```
 
-## Setup
+## Prerequisites
 
-### Prerequisites
-
-- A Databricks workspace with serverless compute
+- Databricks workspace with serverless compute
+- Databricks CLI with OAuth authentication
 - Unity Catalog access to an Amazon S3 external location
-- A Snowflake account, warehouse, database, role, and external S3 stage
-- A Snowflake user configured for RSA key-pair authentication
-- A Databricks Git folder connected to this repository
+- Snowflake account, warehouse, database, role, and external S3 stage
+- Snowflake user configured for RSA key-pair authentication
+- GitHub repository access
 
-### Databricks secret scope
+## Databricks Secrets
 
-Create a secret scope named `lakehouse` and populate these keys:
+Create a secret scope named `lakehouse` containing:
 
 ```text
 snowflake-user
@@ -166,33 +299,33 @@ snowflake-private-key-b64
 snowflake-private-key-passphrase
 ```
 
-Use an encrypted RSA private key. Never commit the private key, passphrase, generated `profiles.yml`, or local environment files.
+Never commit private keys, passphrases, generated `profiles.yml` files, or environment files.
 
-### External storage
+## Local dbt Development
 
-Configure:
+Create an isolated environment:
 
-1. A Unity Catalog external location that grants Databricks access to the S3 bucket.
-2. A Snowflake storage integration and external stage that can read the Databricks output prefix.
-3. Appropriate least-privilege access for the Databricks and Snowflake identities.
-
-The publishing notebook expects the Snowflake external stage `RAW_S3_STAGE`. Change the notebook configuration if your stage uses a different name.
-
-### Databricks job
-
-Create the four notebook tasks shown above and configure each task to depend on the preceding task. Use the repository's `main` branch for the validated workflow.
-
-The dbt notebook installs its pinned dependencies from:
-
-```text
-databricks/notebooks/dbt_requirements.txt
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
 ```
 
-Run the complete workflow from **Jobs & Pipelines** and confirm that all four tasks finish successfully.
+Configure `~/.dbt/profiles.yml` with environment-variable references, then run:
+
+```bash
+cd sales_pipeline
+dbt deps
+dbt debug
+dbt source freshness
+dbt build --select +path:models/marts
+dbt snapshot
+```
 
 ## Verification
 
-After a successful run, verify the most recent pipeline audit in Snowflake:
+Review the latest Snowflake publishing runs:
 
 ```sql
 SELECT *
@@ -200,51 +333,36 @@ FROM LUCIEN_MIGRATION.RAW.PIPELINE_RUN_AUDIT
 ORDER BY COMPLETED_AT DESC;
 ```
 
-Confirm the promoted raw-table counts:
+Validate RAW table counts:
 
 ```sql
-SELECT COUNT(*) FROM LUCIEN_MIGRATION.RAW.RAW_SALES;
-SELECT COUNT(*) FROM LUCIEN_MIGRATION.RAW.RAW_PRODUCTS;
+SELECT 'RAW_SALES' AS TABLE_NAME, COUNT(*) AS ROW_COUNT
+FROM LUCIEN_MIGRATION.RAW.RAW_SALES
+
+UNION ALL
+
+SELECT 'RAW_PRODUCTS' AS TABLE_NAME, COUNT(*) AS ROW_COUNT
+FROM LUCIEN_MIGRATION.RAW.RAW_PRODUCTS;
 ```
 
-Then validate the dbt-created objects in the `STAGING` and `ANALYTICS` schemas.
+Validate the product snapshot:
 
-## Local dbt development
-
-Install the pinned development dependencies:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements-dev.txt
+```sql
+SELECT
+    COUNT(*) AS SNAPSHOT_ROWS,
+    COUNT(DISTINCT PRODUCT_ID) AS DISTINCT_PRODUCTS,
+    COUNT_IF(DBT_VALID_TO IS NULL) AS CURRENT_VERSIONS,
+    COUNT_IF(DBT_VALID_TO IS NOT NULL) AS HISTORICAL_VERSIONS
+FROM LUCIEN_MIGRATION.SNAPSHOTS.SCD_PRODUCTS;
 ```
 
-Configure a local dbt profile securely, then run:
-
-```bash
-cd sales_pipeline
-dbt deps
-dbt debug
-dbt build --select +path:models/marts
-```
-
-Do not commit `.env`, `profiles.yml`, private keys, or passphrases.
-
-## Design decisions
-
-- **Databricks owns Bronze and Silver:** Spark handles scalable ingestion and validation.
-- **S3 decouples platforms:** Parquet provides an efficient and auditable handoff between Databricks and Snowflake.
-- **Snowflake and dbt own Gold:** Existing warehouse models and Lightdash semantics remain authoritative.
-- **Batch COPY is used for this workload:** Snowflake bulk loading is appropriate for run-partitioned files; streaming ingestion can be added when continuous arrival is required.
-- **Validation precedes promotion:** Reconciliation and atomic swaps keep incomplete loads away from downstream consumers.
-
-## Pipeline Execution Evidence
+## Pipeline Evidence
 
 ### Databricks Workflow
 
 ![Successful Databricks workflow](docs/images/databricks-job-success.png)
 
-### dbt Build and Automated Tests
+### dbt Build and Tests
 
 ![Successful dbt build](docs/images/dbt-build-success.png)
 
@@ -252,10 +370,20 @@ Do not commit `.env`, `profiles.yml`, private keys, or passphrases.
 
 ![Snowflake pipeline audit](docs/images/snowflake-pipeline-audit.png)
 
-### Snowflake Raw-Table Reconciliation
+### Snowflake Row Reconciliation
 
-![Snowflake raw-table counts](docs/images/snowflake-row-counts.png)
+![Snowflake row counts](docs/images/snowflake-row-counts.png)
 
-## Portfolio scope
+## Design Decisions
 
-This repository is a portfolio implementation designed to demonstrate modern data engineering patterns. It uses generated sample data and production-style controls; it is not presented as an employer-operated production system.
+- **Databricks owns Bronze and Silver:** Spark handles ingestion, validation, deduplication, and scalable Delta processing.
+- **S3 decouples platforms:** Run-partitioned Parquet provides an efficient and auditable handoff.
+- **Snowflake and dbt own Gold:** Warehouse models and Lightdash semantics remain authoritative.
+- **Incremental MERGE is the default:** Repeat runs avoid destructive replacement and unnecessary processing.
+- **Quarantine precedes publication:** Invalid records are isolated before downstream consumption.
+- **Freshness and tests block bad data:** dbt prevents stale or invalid sources from silently reaching analytics.
+- **Infrastructure is version controlled:** Databricks workflow configuration is reviewed and deployed as code.
+
+## Portfolio Scope
+
+This is a portfolio implementation using generated sample data and personal cloud resources. It demonstrates production engineering patterns but is not represented as an employer-operated production system.
