@@ -5,8 +5,13 @@
         target_schema='snapshots',
         unique_key='product_id',
         strategy='check',
-        check_cols=['title', 'price'],
-        invalidate_harddeletes=True
+        check_cols=[
+            'product_name',
+            'product_description',
+            'price',
+            'category'
+        ],
+        hard_deletes='invalidate'
     )
 }}
 
