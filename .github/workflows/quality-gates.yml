@@ -1,0 +1,107 @@
+name: Quality Gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - production-hardening
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install validation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+          
+      - name: Prepare dbt CI profile
+        run: |
+          mkdir -p "$HOME/.dbt"
+          cp .github/dbt-ci-profiles.yml "$HOME/.dbt/profiles.yml"
+          chmod 600 "$HOME/.dbt/profiles.yml"
+
+      - name: Validate Databricks notebook JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          notebooks = sorted(Path("databricks/notebooks").glob("*.ipynb"))
+
+          if not notebooks:
+              raise SystemExit("No Databricks notebooks were found.")
+
+          for notebook in notebooks:
+              with notebook.open(encoding="utf-8") as file:
+                  json.load(file)
+              print(f"Validated {notebook}")
+          PY
+
+      - name: Validate Python syntax
+        run: python -m compileall -q sales_pipeline
+
+      - name: Validate bundle YAML syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          files = [
+              Path("databricks.yml"),
+              *sorted(Path("resources").glob("*.yml")),
+          ]
+
+          for path in files:
+              with path.open(encoding="utf-8") as file:
+                  yaml.safe_load(file)
+              print(f"Validated {path}")
+          PY
+
+      - name: Install dbt packages
+        working-directory: sales_pipeline
+        env:
+          DBT_ENV_SECRET_KEY_FILE_PATH: /dev/null
+          DBT_ENV_SECRET_KEY_PASSPHRASE: placeholder
+          SNOWFLAKE_ACCOUNT: placeholder
+          SNOWFLAKE_DATABASE: LUCIEN_MIGRATION
+          SNOWFLAKE_ROLE: placeholder
+          SNOWFLAKE_SCHEMA: ANALYTICS
+          SNOWFLAKE_USER: placeholder
+          SNOWFLAKE_WAREHOUSE: placeholder
+        run: dbt deps
+
+      - name: Parse dbt project without deprecations
+        working-directory: sales_pipeline
+        env:
+          DBT_ENV_SECRET_KEY_FILE_PATH: /dev/null
+          DBT_ENV_SECRET_KEY_PASSPHRASE: placeholder
+          SNOWFLAKE_ACCOUNT: placeholder
+          SNOWFLAKE_DATABASE: LUCIEN_MIGRATION
+          SNOWFLAKE_ROLE: placeholder
+          SNOWFLAKE_SCHEMA: ANALYTICS
+          SNOWFLAKE_USER: placeholder
+          SNOWFLAKE_WAREHOUSE: placeholder
+        run: >-
+          dbt
+          --show-all-deprecations
+          --warn-error-options '{"error": ["Deprecations"]}'
+          parse
+          --no-partial-parse

@@ -1,0 +1,82 @@
+resources:
+  jobs:
+    lakehouse_medallion_pipeline:
+      name: lakehouse_medallion_pipeline_bundle
+
+      description: >-
+        Incremental medallion pipeline using Databricks Delta,
+        AWS S3, Snowflake, and dbt Core.
+
+      max_concurrent_runs: 1
+
+      queue:
+        enabled: true
+
+      email_notifications:
+        on_failure:
+          - ${workspace.current_user.userName}
+
+      notification_settings:
+        no_alert_for_skipped_runs: true
+        no_alert_for_canceled_runs: true
+
+      parameters:
+        - name: pipeline_run_id
+          default: 'job_{{job.run_id}}'
+
+        - name: catalog
+          default: ${var.catalog}
+
+        - name: schema
+          default: ${var.schema}
+
+        - name: publish_mode
+          default: incremental
+
+        - name: s3_base_path
+          default: ${var.s3_base_path}
+
+        - name: secret_scope
+          default: ${var.secret_scope}
+
+        - name: snowflake_stage
+          default: ${var.snowflake_stage}
+
+      tasks:
+        - task_key: bronze_ingestion
+          notebook_task:
+            notebook_path: ../databricks/notebooks/01-bronze-ingestion.ipynb
+          timeout_seconds: 900
+          max_retries: 2
+          min_retry_interval_millis: 60000
+          retry_on_timeout: false
+
+        - task_key: silver_transformation
+          depends_on:
+            - task_key: bronze_ingestion
+          notebook_task:
+            notebook_path: ../databricks/notebooks/02-silver-transformation.ipynb
+          timeout_seconds: 900
+          max_retries: 2
+          min_retry_interval_millis: 60000
+          retry_on_timeout: false
+
+        - task_key: publish_to_snowflake
+          depends_on:
+            - task_key: silver_transformation
+          notebook_task:
+            notebook_path: ../databricks/notebooks/03-publish-to-snowflake.ipynb
+          timeout_seconds: 1800
+          max_retries: 2
+          min_retry_interval_millis: 120000
+          retry_on_timeout: false
+
+        - task_key: dbt_build
+          depends_on:
+            - task_key: publish_to_snowflake
+          notebook_task:
+            notebook_path: ../databricks/notebooks/04-dbt-build.ipynb
+          timeout_seconds: 1800
+          max_retries: 1
+          min_retry_interval_millis: 120000
+          retry_on_timeout: false

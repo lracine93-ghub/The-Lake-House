@@ -2,14 +2,26 @@
 
 {{
     config(
-        target_schema='main',
-        unique_key='id', 
+        target_schema='snapshots',
+        unique_key='product_id',
         strategy='check',
-        check_cols=['title', 'price'],
-        invalidate_harddeletes=True
+        check_cols=[
+            'product_name',
+            'product_description',
+            'price',
+            'category'
+        ],
+        hard_deletes='invalidate'
     )
 }}
 
-SELECT * FROM {{ ref('stg_products') }}
+SELECT
+    product_id,
+    product_name,
+    product_description,
+    price,
+    category,
+    last_updated
+FROM {{ ref('stg_products') }}
 
 {% endsnapshot %}
